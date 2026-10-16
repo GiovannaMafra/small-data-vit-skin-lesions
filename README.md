@@ -1,63 +1,75 @@
-## Vision Transformer for Small-Size Datasets
+# ViTs com poucos dados em lesões de pele: reprodução de SPT + LSA e um híbrido convolucional (CL-ViT)
 
-**Seung Hoon Lee and Seunghyun Lee and Byung Cheol Song** | [Paper](https://arxiv.org/abs/2112.13492)
+Projeto da disciplina **CIN0040 – Introdução à Aprendizagem Profunda** (CIn-UFPE, 2026.2).
 
-Inha University
+> **Este repositório é um fork de [aanna0701/SPT_LSA_ViT](https://github.com/aanna0701/SPT_LSA_ViT)**, o código oficial do artigo *Vision Transformer for Small-Size Datasets* (Lee, Lee e Song, 2021). O código-base e as ideias de SPT e LSA pertencem aos autores originais. O README original está preservado em [`README_ORIGINAL.md`](README_ORIGINAL.md).
 
-### Abstract
-Recently, the Vision Transformer (ViT), which applied the transformer structure to the image classification task, has outperformed convolutional neural networks. However, the high performance of the ViT results from pre-training using a large-size dataset such as JFT-300M, and its dependence on a large dataset is interpreted as due to low locality inductive bias. This paper proposes Shifted Patch Tokenization (SPT) and Locality Self-Attention (LSA), which effectively solve the lack of locality inductive bias and enable it to learn from scratch even on small-size datasets. Moreover, SPT and LSA are generic and effective add-on modules that are easily applicable to various ViTs. Experimental results show that when both SPT and LSA were applied to the ViTs, the performance improved by an average of 2.96% in Tiny-ImageNet, which is a representative small-size dataset. Especially, Swin Transformer achieved an overwhelming performance improvement of 4.08% thanks to the proposed SPT and LSA.
+## Resumo
 
-### Method
-#### Shifted Patch Tokenization
+Como treinar Vision Transformers do zero com poucos dados, em um problema real de saúde? Reproduzimos os resultados do artigo (SPT + LSA) em CIFAR-100 e Tiny-ImageNet, propomos o **CL-ViT** (um *stem* convolucional no lugar do SPT, com LSA) e avaliamos os modelos também no **DermaMNIST** (lesões de pele, 7 classes, desbalanceado).
 
-<!-- <div align="center"> -->
-  <img src="SPT.png" width="75%" title="" alt="teaser">
-<!-- </div> -->
+<!-- Quando houver resultados, coloque aqui uma figura-resumo (ex.: gráfico de barras ou mapas de atenção). -->
 
-#### Locality Self-Attention
+## Resultados
 
-<!-- <div align="center"> -->
-  </img><img src="LSA.png" width="75%" title="" alt="teaser"></img>
-<!--   </div> -->
+| Modelo | CIFAR-100 (acc. %) | Tiny-ImageNet (acc. %) | DermaMNIST (AUC / F1 macro) |
+|---|---|---|---|
+| ViT | _a preencher_ | _a preencher_ | _a preencher_ |
+| SL-ViT (artigo) | _a preencher_ | _a preencher_ | _a preencher_ |
+| **CL-ViT (nosso)** | _a preencher_ | _a preencher_ | _a preencher_ |
 
-### Model Performance
-#### Small-Size Dataset Classification
-| Model      | FLOPs | CIFAR10 | CIFAR100 | SVHN |Tiny-ImageNet |
-|-----------|---------:|--------:|:-----------------:|:-----------------:|:-----------------:|
-|ViT    | 189.8  | 93.58  | 73.81 | 97.82 | 57.07 |
-|SL-ViT | 199.2  | 94.53  | 76.92 | 97.79 | 61.07 |
-|T2T    | 643.0  | 95.30  | 77.00 | 97.90 | 60.57 |
-|SL-T2T | 671.4  | 95.57  | 77.36 | 97.91 | 61.83 |
-|CaiT   | 613.8  | 94.91  | 76.89 | 98.13 | 64.37 |
-|SL-CaiT| 623.3  | 95.81  | 80.32 | 98.28 | 67.18 |
-|PiT    | 279.2  | 94.24  | 74.99 | 97.83 | 60.25 |
-|SL-PiT | 322.9  | 95.88  | 79.00 | 97.93 | 62.91 |
-|Swin   | 242.3  | 94.46  | 76.87 | 97.72 | 60.87 |
-|SL-Swin| 284.9  | 95.93  | 79.99 | 97.92 | 64.95 |
+Valores do artigo, como referência: ViT 73,81 e SL-ViT 76,92 (CIFAR-100); ViT 57,07 e SL-ViT 61,07 (Tiny-ImageNet). Resultados nossos: média ± desvio de 3 sementes, acurácia da última época.
 
-#### Accuracy-Throughput Graph on Tiny-ImageNet
+## O que é nosso e o que é original
 
-<!-- <div align="center"> -->
-  <img src="main.png" width="50%" title="" alt="teaser"></img>
-<!-- </div> -->
+| Parte | Origem |
+|---|---|
+| `main.py`, `models/` (ViT, SPT, LSA), `utils/` | Código original dos autores |
+| `models/` (stem convolucional / CL-ViT) | Nossa contribuição |
+| `utils/dataloader.py` (suporte ao DermaMNIST) | Nossa adaptação |
+| `scripts/` (jobs Slurm), `notebooks/`, `results/` | Nossa contribuição |
 
-## How to train models
-### Pure ViT
+## Estrutura
+
+```
+main.py, models/, utils/   código-base (autores) + nossas alterações
+scripts/                   jobs Slurm (Cluster Apuana, CIn-UFPE)
+notebooks/                 01_eda, 02_resultados, 03_demo_treino_curto (Colab)
+results/                   um JSON/CSV por execução
+```
+
+## Como reproduzir
+
 ```bash
-python main.py --model vit 
-```
-### SL-Swin
-```bash
-python main.py --model swin --is_LSA --is_SPT 
+git clone <URL-DESTE-REPOSITORIO>
+cd <pasta>
+pip install -r requirements.txt   # ajuste se necessário
+# exemplo (confira os argumentos com: python main.py --help)
+python main.py --model vit --dataset CIFAR100 --lr 0.003
+python main.py --model vit --dataset CIFAR100 --lr 0.001 --is_SPT --is_LSA
 ```
 
-## Citation
+Os notebooks em `notebooks/` rodam no Google Colab e carregam os resultados de `results/`.
 
-```
+## Equipe
+
+- Giovanna Marques Mafra
+- Luma Rios Ferreira
+- Mariana Sousa Freire
+
+Professor: Tsang Ing Ren.
+
+## Créditos e citação
+
+Se usar este trabalho, cite também o artigo original:
+
+```bibtex
 @article{lee2021vision,
-  title={Vision Transformer for Small-Size Datasets},
-  author={Lee, Seung Hoon and Lee, Seunghyun and Song, Byung Cheol},
-  journal={arXiv preprint arXiv:2112.13492},
-  year={2021}
+  title   = {Vision Transformer for Small-Size Datasets},
+  author  = {Lee, Seung Hoon and Lee, Seunghyun and Song, Byung Cheol},
+  journal = {arXiv preprint arXiv:2112.13492},
+  year    = {2021}
 }
 ```
+
+Outras fontes: MedMNIST v2 (DermaMNIST), HAM10000, CIFAR-100 e Tiny-ImageNet (ver a proposta/relatório do projeto).
