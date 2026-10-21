@@ -1,0 +1,15 @@
+#comandos para configurar o venv no cluster 
+(fiz fora da pasta do repositorio clonado no cluster)
+
+python3 -m venv venv
+
+source venv/bin/activate
+
+pip install --upgrade pip
+
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+pip install medmnist einops timm matplotlib seaborn scikit-learn pandas
+
+
+
