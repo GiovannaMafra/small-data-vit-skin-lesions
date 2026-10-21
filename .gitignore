@@ -1,3 +1,5 @@
 dataset/*
 tensorboard/*
 save/*
+venv/*
+data/*
