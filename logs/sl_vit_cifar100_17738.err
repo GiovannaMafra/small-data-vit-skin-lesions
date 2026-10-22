@@ -1,0 +1,15 @@
+/home/CIN/gmm8/venv/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+CIFAR100
+Creating model: vit-Base--CIFAR100-LR[0.003]-Seed42
+Number of params: 2,709,796
+Initial learning rate: 0.003000
+Start training for 100 epochs
+label smoothing used
+Stochastic depth(0.1) used 
+Cutmix used
+Mixup used
+Repeated Aug(3) used
+Autoaugmentation used
+Random erasing(0.25) used 
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [01:05<1:48:17, 65.63s/it]  2%|▏         | 2/100 [02:10<1:46:02, 64.92s/it]  3%|▎         | 3/100 [03:09<1:40:54, 62.42s/it]  4%|▍         | 4/100 [04:16<1:42:30, 64.06s/it]  5%|▌         | 5/100 [05:22<1:42:40, 64.84s/it]  6%|▌         | 6/100 [06:27<1:41:54, 65.05s/it]  7%|▋         | 7/100 [07:32<1:40:37, 64.92s/it]  8%|▊         | 8/100 [08:36<1:38:58, 64.55s/it]  9%|▉         | 9/100 [09:37<1:36:19, 63.52s/it] 10%|█         | 10/100 [10:43<1:36:19, 64.22s/it] 11%|█         | 11/100 [11:45<1:34:13, 63.52s/it] 12%|█▏        | 12/100 [12:43<1:31:04, 62.10s/it] 13%|█▎        | 13/100 [13:50<1:31:48, 63.32s/it]

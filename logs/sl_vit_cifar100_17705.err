@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/CIN/gmm8/small-data-vit-skin-lesions/main.py", line 11, in <module>
+    from torchsummary import summary
+ModuleNotFoundError: No module named 'torchsummary'

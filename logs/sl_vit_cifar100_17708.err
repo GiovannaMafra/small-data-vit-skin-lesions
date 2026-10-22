@@ -1,0 +1,9 @@
+stty: 'standard input': Inappropriate ioctl for device
+Traceback (most recent call last):
+  File "/home/CIN/gmm8/small-data-vit-skin-lesions/main.py", line 16, in <module>
+    from utils.logger_dict import Logger_dict
+  File "/home/CIN/gmm8/small-data-vit-skin-lesions/utils/logger_dict.py", line 6, in <module>
+    from utils.print_progress import progress_bar
+  File "/home/CIN/gmm8/small-data-vit-skin-lesions/utils/print_progress.py", line 5, in <module>
+    _, term_width = os.popen('stty size', 'r').read().split()
+ValueError: not enough values to unpack (expected 2, got 0)
