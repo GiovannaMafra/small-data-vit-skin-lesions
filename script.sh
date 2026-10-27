@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=sl_vit_cifar100       #mudar aqui o nome do modelo que está treinando
+#SBATCH --job-name=sl_svit_cifar100       #mudar aqui o nome do modelo que está treinando
 #SBATCH --output=logs/%x_%j.out          #arquivo onde serão salvas as métricas (stdout)
 #SBATCH --error=logs/%x_%j.err           #arquivo onde serão salvos eventuais erros (stderr)
 #SBATCH --ntasks=1
@@ -24,10 +24,10 @@ echo "Iniciando o treinamento em: $(date)"
 echo "Modelo: ViT | Dataset: CIFAR-100"
 
 #ViT Puro (Baseline)
-python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
+#python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
 
 #S-ViT (Apenas com SPT)
-#python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
+python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
 
 #L-ViT (Apenas com LSA)
 #python main.py --model vit --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
