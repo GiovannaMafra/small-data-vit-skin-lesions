@@ -9,6 +9,7 @@
 #SBATCH -p short-simple
 #SBATCH --qos=simple
 #SBATCH --signal=USR1@5
+#SBATCH -w cluster-node6
 
 # 1. Garante que está no diretório correto do projeto
 cd $SLURM_SUBMIT_DIR
@@ -24,7 +25,10 @@ echo "Iniciando o treinamento em: $(date)"
 echo "Modelo: SLViT | Dataset: CIFAR-100"
 
 #ViT Puro (Baseline)
+#testar com seed diferentes (tirar a media depois)
 #python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
+#python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 43
+#python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 44
 
 #S-ViT (Apenas com SPT)
 #python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
@@ -34,5 +38,7 @@ echo "Modelo: SLViT | Dataset: CIFAR-100"
 
 #SL-ViT (Modelo Completo do Artigo: SPT + LSA)
 python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
+#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
+#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 44
 
 echo "Treinamento finalizado em: $(date)"
