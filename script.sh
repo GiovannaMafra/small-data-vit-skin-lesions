@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=sl_slvit_cifar100       #mudar aqui o nome do modelo que está treinando
-#SBATCH --output=logs/%x_%j.out          #arquivo onde serão salvas as métricas (stdout)
-#SBATCH --error=logs/%x_%j.err           #arquivo onde serão salvos eventuais erros (stderr)
+#SBATCH --job-name=sl_slvit_cifar100       
+#SBATCH --output=logs/%x_%j.out          
+#SBATCH --error=logs/%x_%j.err          
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=16G
@@ -21,7 +21,7 @@ source ../venv/bin/activate
 # (Altere as flags abaixo conforme o modelo que deseja treinar)
 
 echo "Iniciando o treinamento em: $(date)"
-echo "Modelo: ViT | Dataset: CIFAR-100"
+echo "Modelo: SLViT | Dataset: CIFAR-100"
 
 #ViT Puro (Baseline)
 #python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
