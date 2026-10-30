@@ -1,0 +1,15 @@
+{
+  "mean": [
+    0.763099,
+    0.538066,
+    0.561366
+  ],
+  "std": [
+    0.135438,
+    0.152966,
+    0.167904
+  ],
+  "resolucao": 32,
+  "interpolacao": "bilinear",
+  "calculado_em": "treino"
+}

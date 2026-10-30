@@ -24,7 +24,7 @@ echo "Iniciando o treinamento em: $(date)"
 echo "Modelo: ViT | Dataset: CIFAR-100"
 
 #ViT Puro (Baseline)
-python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
+python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 43
 
 #S-ViT (Apenas com SPT)
 #python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
