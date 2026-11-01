@@ -9,7 +9,7 @@
 #SBATCH -p short-simple
 #SBATCH --qos=simple
 #SBATCH --signal=USR1@5
-#SBATCH -w cluster-node7
+#SBATCH -w cluster-node4
 
 # 1. Garante que está no diretório correto do projeto
 cd $SLURM_SUBMIT_DIR
@@ -42,7 +42,7 @@ python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epoc
 
 #SL-ViT (Modelo Completo do Artigo: SPT + LSA)
 #python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
-#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
+python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
 #python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 1
 
 echo "Treinamento finalizado em: $(date)"
