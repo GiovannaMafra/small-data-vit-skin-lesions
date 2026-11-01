@@ -9,7 +9,7 @@
 #SBATCH -p short-simple
 #SBATCH --qos=simple
 #SBATCH --signal=USR1@5
-#SBATCH -w cluster-node6
+#SBATCH -w cluster-node7
 
 # 1. Garante que está no diretório correto do projeto
 cd $SLURM_SUBMIT_DIR
