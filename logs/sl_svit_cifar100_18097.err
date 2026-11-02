@@ -1,0 +1,2 @@
+/tmp/slurmd/job18097/slurm_script: line 18: ../venv/bin/activate: No such file or directory
+/tmp/slurmd/job18097/slurm_script: line 30: python: command not found

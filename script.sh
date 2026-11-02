@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=sl_slvit_cifar100       
-#SBATCH --output=logs/%x_%j.out          
-#SBATCH --error=logs/%x_%j.err          
+#SBATCH --job-name=sl_vit_cifar100_seed44
+#SBATCH --output=logs/%x_%j.out
+#SBATCH --error=logs/%x_%j.err
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=16G
@@ -9,36 +9,52 @@
 #SBATCH -p short-simple
 #SBATCH --qos=simple
 #SBATCH --signal=USR1@5
-#SBATCH -w cluster-node6
+#SBATCH --nodelist=cluster-node5
 
-# 1. Garante que está no diretório correto do projeto
-cd $SLURM_SUBMIT_DIR
+# Ir para a pasta onde o job foi enviado
+cd "$SLURM_SUBMIT_DIR"
+
+# Criar pasta de logs, caso ainda não exista
 mkdir -p logs
 
-# 2. Ativa o ambiente virtual do Python
-source ../venv/bin/activate
+# Ativar o ambiente virtual
+export VIRTUAL_ENV=/home/CIN/lrf2/venv/.venv
+export PATH="$VIRTUAL_ENV/bin:$PATH"
 
-# 3. Executa o treinamento do modelo
-# (Altere as flags abaixo conforme o modelo que deseja treinar)
-
+# Informações do treinamento
+echo "========================================"
 echo "Iniciando o treinamento em: $(date)"
-echo "Modelo: SLViT | Dataset: CIFAR-100"
+echo "Node: $(hostname)"
+echo "Python: $(which python)"
+echo "Modelo: SL-ViT | Dataset: CIFAR-100 | Seed: 44"
+echo "========================================"
 
-#ViT Puro (Baseline)
-#testar com seed diferentes (tirar a media depois)
-#python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
-python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 43
-#python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 44
+# Verificar a GPU disponibilizada pelo SLURM
+nvidia-smi
 
-#S-ViT (Apenas com SPT)
-#python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
+# Verificar PyTorch e CUDA
+python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA disponível:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'Nenhuma GPU disponível')"
 
-#L-ViT (Apenas com LSA)
-#python main.py --model vit --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
+# Verificar Colorama
+python -c "from colorama import Fore, Style; print('Colorama: OK')"
 
-#SL-ViT (Modelo Completo do Artigo: SPT + LSA)
-#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
-#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
-#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 44
+# SL-ViT: SPT + LSA
+python main.py \
+    --model vit \
+    --is_SPT \
+    --is_LSA \
+    --dataset CIFAR100 \
+    --data_path ./data \
+    --epochs 100 \
+    --lr 0.001 \
+    --seed 44
 
-echo "Treinamento finalizado em: $(date)"
+# Capturar código de saída do treinamento
+STATUS=$?
+
+echo "========================================"
+echo "Treinamento encerrado em: $(date)"
+echo "Exit code: $STATUS"
+echo "========================================"
+
+exit $STATUS
