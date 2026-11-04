@@ -32,7 +32,7 @@ echo "Modelo: ViT | Dataset: CIFAR-100"
 
 #S-ViT (Apenas com SPT)
 #python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
-python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
+#python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
 #python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 1
 
 #L-ViT (Apenas com LSA)
@@ -42,7 +42,7 @@ python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epoc
 
 #SL-ViT (Modelo Completo do Artigo: SPT + LSA)
 #python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
-python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
-#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 1
+#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
+python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 1
 
 echo "Treinamento finalizado em: $(date)"
