@@ -37,12 +37,12 @@ echo "Modelo: ViT | Dataset: CIFAR100"
 #python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 44
 
 #L-ViT (Apenas com LSA)
-python main.py --model vit --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
+#python main.py --model vit --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
 #python main.py --model vit --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 43
 #python main.py --model vit --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 44
 
 #SL-ViT (Modelo Completo do Artigo: SPT + LSA)
-#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
+python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
 #python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 43
 #python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 44
 
