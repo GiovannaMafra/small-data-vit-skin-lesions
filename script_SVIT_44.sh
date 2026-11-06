@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name=svit_seed42
-#SBATCH --output=logs/tiny-imagenet/svit_seed42_%j.out
-#SBATCH --error=logs/tiny-imagenet/svit_seed42_%j.err
+#SBATCH --job-name=svit_seed44
+#SBATCH --output=logs/svit_seed44_%j.out
+#SBATCH --error=logs/svit_seed44_%j.err
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=16G
@@ -12,9 +12,8 @@
 #SBATCH --signal=USR1@5
 #SBATCH --exclude=cluster-node9
 
-cd "$SLURM_SUBMIT_DIR"
-
-mkdir -p logs/tiny-imagenet
+cd /home/CIN/lrf2/small-data-vit-skin-lesions
+mkdir -p logs
 
 export VIRTUAL_ENV=/home/CIN/lrf2/venv/.venv
 export PATH="$VIRTUAL_ENV/bin:$PATH"
@@ -22,8 +21,8 @@ hash -r
 
 echo "=========================================="
 echo "Experimento: S-ViT (SPT)"
-echo "Dataset: Tiny ImageNet"
-echo "Seed: 42"
+echo "Dataset: CIFAR100"
+echo "Seed: 44"
 echo "Node: $(hostname)"
 echo "=========================================="
 
@@ -50,16 +49,16 @@ import colorama
 print('Todas as dependências OK')
 "
 
-echo "Iniciando treinamento S-ViT..."
+echo "Iniciando treinamento L-ViT..."
 
 python main.py \
     --model vit \
     --is_SPT \
-    --dataset T-IMNET \
+    --dataset CIFAR100 \
     --data_path ./data \
     --epochs 100 \
-    --lr 0.001 \
-    --seed 42
+    --lr 0.003 \
+    --seed 44
 
 STATUS=$?
 
@@ -69,3 +68,4 @@ echo "Exit code: $STATUS"
 echo "=========================================="
 
 exit $STATUS
+

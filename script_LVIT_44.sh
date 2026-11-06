@@ -12,7 +12,7 @@
 #SBATCH --signal=USR1@5
 #SBATCH --exclude=cluster-node9
 
-cd /home/CIN/lrf2/small-data-vit-skin-lesions
+cd "$SLURM_SUBMIT_DIR"
 mkdir -p logs
 
 export VIRTUAL_ENV=/home/CIN/lrf2/venv/.venv
@@ -49,7 +49,7 @@ import colorama
 print('Todas as dependências OK')
 "
 
-echo "Iniciando treinamento L-ViT..."
+echo "Iniciando treinamento S-ViT..."
 
 python main.py \
     --model vit \
@@ -57,7 +57,7 @@ python main.py \
     --dataset CIFAR100 \
     --data_path ./data \
     --epochs 100 \
-    --lr 0.001 \
+    --lr 0.003 \
     --seed 44
 
 STATUS=$?
@@ -68,4 +68,3 @@ echo "Exit code: $STATUS"
 echo "=========================================="
 
 exit $STATUS
-
