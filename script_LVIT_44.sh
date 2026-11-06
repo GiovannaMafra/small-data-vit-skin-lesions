@@ -49,7 +49,7 @@ import colorama
 print('Todas as dependências OK')
 "
 
-echo "Iniciando treinamento S-ViT..."
+echo "Iniciando treinamento L-ViT..."
 
 python main.py \
     --model vit \
