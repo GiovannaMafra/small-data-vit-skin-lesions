@@ -107,6 +107,8 @@ def init_parser():
     
     parser.add_argument('--is_SPT', action='store_true', help='Shifted Patch Tokenization')
 
+    parser.add_argument('--is_CL', action='store_true', help='Ativa o modelo proposto CL-ViT (ConvStem + LSA)')
+
     return parser
 
 
@@ -450,6 +452,9 @@ if __name__ == '__main__':
  
     if args.is_LSA:
         model_name += "-LSA"
+
+    if args.is_CL:
+        model_name += "-CL"
         
     model_name += f"-{args.tag}-{args.dataset}-LR[{args.lr}]-Seed{args.seed}"
     save_path = os.path.join(os.getcwd(), 'save', model_name)
