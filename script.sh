@@ -22,23 +22,11 @@ source ../venv/bin/activate
 # (Altere as flags abaixo conforme o modelo que deseja treinar)
 
 echo "Iniciando o treinamento em: $(date)"
-echo "Modelo: SLViT | Dataset: CIFAR-100"
+echo "Modelo: CLViT | Dataset: CIFAR-100"
 
-#ViT Puro (Baseline)
-#testar com seed diferentes (tirar a media depois)
-#python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
-#python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 43
-#python main.py --model vit --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 44
-
-#S-ViT (Apenas com SPT)
-#python main.py --model vit --is_SPT --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
-
-#L-ViT (Apenas com LSA)
-#python main.py --model vit --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
-
-#SL-ViT (Modelo Completo do Artigo: SPT + LSA)
-python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 42
-#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 43
-#python main.py --model vit --is_SPT --is_LSA --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.001 --seed 44
+#CL-ViT (Modelo Hibrido)
+python main.py --model vit --is_CL --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 42
+#python main.py --model vit --is_CL --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 43
+#python main.py --model vit --is_CL --dataset CIFAR100 --data_path ./data --epochs 100 --lr 0.003 --seed 44
 
 echo "Treinamento finalizado em: $(date)"
