@@ -1,0 +1,344 @@
+{
+  "versoes": {
+    "medmnist": "3.0.2",
+    "torch": "2.14.1+cu130",
+    "numpy": "2.2.6",
+    "seed": 42
+  },
+  "mapeamento": {
+    "0": {
+      "nome": "actinic keratoses and intraepithelial carcinoma",
+      "codigo": "akiec"
+    },
+    "1": {
+      "nome": "basal cell carcinoma",
+      "codigo": "bcc"
+    },
+    "2": {
+      "nome": "benign keratosis-like lesions",
+      "codigo": "bkl"
+    },
+    "3": {
+      "nome": "dermatofibroma",
+      "codigo": "df"
+    },
+    "4": {
+      "nome": "melanoma",
+      "codigo": "mel"
+    },
+    "5": {
+      "nome": "melanocytic nevi",
+      "codigo": "nv"
+    },
+    "6": {
+      "nome": "vascular lesions",
+      "codigo": "vasc"
+    }
+  },
+  "indice_melanoma": 4,
+  "indice_nevo": 5,
+  "n_total": 10015,
+  "distribuicao": {
+    "contagens": {
+      "train": {
+        "akiec": 228,
+        "bcc": 359,
+        "bkl": 769,
+        "df": 80,
+        "mel": 779,
+        "nv": 4693,
+        "vasc": 99
+      },
+      "val": {
+        "akiec": 33,
+        "bcc": 52,
+        "bkl": 110,
+        "df": 12,
+        "mel": 111,
+        "nv": 671,
+        "vasc": 14
+      },
+      "test": {
+        "akiec": 66,
+        "bcc": 103,
+        "bkl": 220,
+        "df": 23,
+        "mel": 223,
+        "nv": 1341,
+        "vasc": 29
+      }
+    },
+    "IR_treino": 58.6625,
+    "acuracia_trivial": {
+      "train": 0.6697588126159555,
+      "val": 0.6689930209371885,
+      "test": 0.6688279301745635
+    },
+    "qui2_p": 0.9999999999990877
+  },
+  "interpolacao": {
+    "escolhida": "bilinear",
+    "round_trip_mae": {
+      "nearest": 0.013016385957598686,
+      "bilinear": 0.005200581159442663,
+      "bicubic": 0.0031246959697455168
+    }
+  },
+  "normalizacao": {
+    "mean": [
+      0.763099,
+      0.538066,
+      0.561366
+    ],
+    "std": [
+      0.135438,
+      0.152966,
+      0.167904
+    ],
+    "resolucao": 32,
+    "interpolacao": "bilinear",
+    "calculado_em": "treino"
+  },
+  "atalho_cor_brilho": {
+    "auc_macro_val": 0.7710602695814781,
+    "bal_acc_val": 0.33152072203594457,
+    "f1_macro_val": 0.26493143595852947
+  },
+  "atipicas": {
+    "constantes": 0,
+    "outliers_z4": 16
+  },
+  "duplicatas_exatas": {
+    "grupos": 2,
+    "cruzam_splits": 0,
+    "rotulos_conflitantes": 0
+  },
+  "vazamento_pixels": {
+    "limiar": 0.03783382847905159,
+    "frac_treino_treino(por construção)": 0.05,
+    "val": {
+      "frac_proximos": 0.049850448654037885,
+      "razao_vs_treino": 0.9970089730807576,
+      "rotulo_igual_nos_proximos": 0.86
+    },
+    "teste": {
+      "frac_proximos": 0.05486284289276808,
+      "razao_vs_treino": 1.0972568578553614,
+      "rotulo_igual_nos_proximos": 0.8363636363636363
+    }
+  },
+  "vazamento_features": {
+    "limiar": 0.9481668472290039,
+    "frac_treino_treino(por construção)": 0.05,
+    "val": {
+      "frac_proximos": 0.05583250249252243,
+      "razao_vs_treino": 1.1166500498504486,
+      "rotulo_igual_nos_proximos": 0.875
+    },
+    "teste": {
+      "frac_proximos": 0.04339152119700748,
+      "razao_vs_treino": 0.8678304239401496,
+      "rotulo_igual_nos_proximos": 0.8850574712643678
+    }
+  },
+  "baseline_linear_pixels": {
+    "auc_macro_val": 0.8460662554509716,
+    "f1_macro_val": 0.3353013999844842,
+    "recall_mel": 0.43243243243243246,
+    "mel_previsto_como_nevo": 0.14414414414414414,
+    "nevo_previsto_como_mel": 0.17287630402384502
+  },
+  "baseline_linear_features": {
+    "auc_macro_val": 0.88802320533542,
+    "f1_macro_val": 0.4076804196091805,
+    "recall_mel": 0.6126126126126126
+  },
+  "resolucao_probe_linear": {
+    "f1_macro": {
+      "16 (de 64)": 0.354,
+      "28 (nativo)": 0.327,
+      "32 (de 28)": 0.323,
+      "32 (de 64)": 0.339,
+      "64 (nativo)": 0.343
+    },
+    "auc_macro": {
+      "16 (de 64)": 0.853,
+      "28 (nativo)": 0.842,
+      "32 (de 28)": 0.84,
+      "32 (de 64)": 0.845,
+      "64 (nativo)": 0.843
+    }
+  },
+  "tabela_patch": [
+    {
+      "patch": 2,
+      "grade": "16x16",
+      "tokens": 256,
+      "pixels_por_patch": 12,
+      "dim_patch_SPT": 60,
+      "pares_de_atencao": 65536,
+      "convs_stride2_no_stem_CL": 1
+    },
+    {
+      "patch": 4,
+      "grade": "8x8",
+      "tokens": 64,
+      "pixels_por_patch": 48,
+      "dim_patch_SPT": 240,
+      "pares_de_atencao": 4096,
+      "convs_stride2_no_stem_CL": 2
+    },
+    {
+      "patch": 8,
+      "grade": "4x4",
+      "tokens": 16,
+      "pixels_por_patch": 192,
+      "dim_patch_SPT": 960,
+      "pares_de_atencao": 256,
+      "convs_stride2_no_stem_CL": 3
+    }
+  ],
+  "cutmix_mc": [
+    {
+      "alpha": 1.0,
+      "area_media_substituida": 0.299,
+      "p_cobre_todo_o_centro": 0.228,
+      "p_toca_o_centro": 0.715
+    },
+    {
+      "alpha": 0.5,
+      "area_media_substituida": 0.291,
+      "p_cobre_todo_o_centro": 0.238,
+      "p_toca_o_centro": 0.669
+    }
+  ],
+  "insumos_balanceamento": {
+    "prior": {
+      "akiec": 0.03254,
+      "bcc": 0.05123,
+      "bkl": 0.10975,
+      "df": 0.01142,
+      "mel": 0.11117,
+      "nv": 0.66976,
+      "vasc": 0.01413
+    },
+    "log_prior": {
+      "akiec": -3.4253,
+      "bcc": -2.9713,
+      "bkl": -2.2096,
+      "df": -4.4726,
+      "mel": -2.1967,
+      "nv": -0.4008,
+      "vasc": -4.2595
+    },
+    "pesos": {
+      "inv": {
+        "akiec": 4.39,
+        "bcc": 2.788,
+        "bkl": 1.302,
+        "df": 12.513,
+        "mel": 1.285,
+        "nv": 0.213,
+        "vasc": 10.111
+      },
+      "inv_sqrt": {
+        "akiec": 2.62,
+        "bcc": 2.088,
+        "bkl": 1.427,
+        "df": 4.424,
+        "mel": 1.418,
+        "nv": 0.578,
+        "vasc": 3.977
+      },
+      "effective": {
+        "akiec": 2.861,
+        "bcc": 1.934,
+        "bkl": 1.087,
+        "df": 7.588,
+        "mel": 1.078,
+        "nv": 0.589,
+        "vasc": 6.189
+      }
+    },
+    "distribuicao_efetiva_sampler": {
+      "alfa=0": {
+        "akiec": 0.0325,
+        "bcc": 0.0512,
+        "bkl": 0.1097,
+        "df": 0.0114,
+        "mel": 0.1112,
+        "nv": 0.6698,
+        "vasc": 0.0141
+      },
+      "alfa=0.5": {
+        "akiec": 0.0853,
+        "bcc": 0.107,
+        "bkl": 0.1566,
+        "df": 0.0505,
+        "mel": 0.1576,
+        "nv": 0.3868,
+        "vasc": 0.0562
+      },
+      "alfa=1": {
+        "akiec": 0.1429,
+        "bcc": 0.1429,
+        "bkl": 0.1429,
+        "df": 0.1429,
+        "mel": 0.1429,
+        "nv": 0.1429,
+        "vasc": 0.1429
+      }
+    },
+    "minoritarias": [
+      "akiec",
+      "df",
+      "vasc"
+    ]
+  },
+  "subconjuntos": [
+    {
+      "fracao": "10%",
+      "n": 700,
+      "akiec": 22,
+      "bcc": 36,
+      "bkl": 77,
+      "df": 8,
+      "mel": 78,
+      "nv": 469,
+      "vasc": 10
+    },
+    {
+      "fracao": "25%",
+      "n": 1751,
+      "akiec": 57,
+      "bcc": 90,
+      "bkl": 192,
+      "df": 20,
+      "mel": 194,
+      "nv": 1173,
+      "vasc": 25
+    },
+    {
+      "fracao": "50%",
+      "n": 3503,
+      "akiec": 114,
+      "bcc": 180,
+      "bkl": 384,
+      "df": 40,
+      "mel": 389,
+      "nv": 2346,
+      "vasc": 50
+    },
+    {
+      "fracao": "100%",
+      "n": 7007,
+      "akiec": 228,
+      "bcc": 359,
+      "bkl": 769,
+      "df": 80,
+      "mel": 779,
+      "nv": 4693,
+      "vasc": 99
+    }
+  ]
+}
