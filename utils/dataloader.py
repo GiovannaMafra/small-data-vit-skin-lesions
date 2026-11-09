@@ -2,6 +2,7 @@ import os
 from colorama import Fore, Style
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
+from medmnist import DermaMNIST
 
 def datainfo(logger, args):
     if args.dataset == 'CIFAR10':
@@ -35,6 +36,15 @@ def datainfo(logger, args):
         n_classes = 200
         img_mean, img_std = (0.4802, 0.4481, 0.3975), (0.2770, 0.2691, 0.2821)
         img_size = 64
+
+    elif args.dataset == 'DermaMNIST':
+        print(Fore.YELLOW + '*' * 80)
+        logger.debug('DermaMNIST')
+        print('*' * 80 + Style.RESET_ALL)
+        n_classes = 7
+        img_mean = (0.5, 0.5, 0.5)
+        img_std = (0.5, 0.5, 0.5)
+        img_size = 32
         
     data_info = dict()
     data_info['n_classes'] = n_classes
@@ -80,5 +90,24 @@ def dataload(args, augmentations, normalize, data_info):
             root=os.path.join(args.data_path, 'tiny_imagenet', 'val'), 
             transform=transforms.Compose([
             transforms.Resize(data_info['img_size']), transforms.ToTensor(), *normalize]))
-    
+
+    elif args.dataset == 'DermaMNIST':
+        train_dataset = DermaMNIST(
+            split='train',
+            root=args.data_path,
+            download=False,
+            transform=augmentations
+        )
+        val_dataset = DermaMNIST(
+            split='val',
+            root=args.data_path,
+            download=False,
+            transform=transforms.Compose([
+                transforms.Resize((data_info['img_size'],
+                                data_info['img_size'])),
+                transforms.ToTensor(),
+                *normalize
+            ])
+        )
+        
     return train_dataset, val_dataset
