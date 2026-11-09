@@ -1,9 +1,8 @@
-cat << 'EOF' > plot_loss.py
 import sys
 import re
 import matplotlib.pyplot as plt
 
-log_path = sys.argv[1] if len(sys.argv) > 1 else 'logs/sl_slvit_cifar100_18365.out'
+log_path = sys.argv[1] 
 
 epochs_train = []
 train_losses = []
@@ -52,4 +51,3 @@ plt.tight_layout()
 output_file = 'loss_curve.png'
 plt.savefig(output_file, dpi=300)
 print(f"✅ Gráfico salvo com sucesso: {output_file}")
-EOF
