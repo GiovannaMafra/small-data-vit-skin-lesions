@@ -9,9 +9,10 @@ def create_model(img_size, n_classes, args):
         patch_size = 4 if img_size == 32 else 8
         model = ViT(img_size=img_size, patch_size = patch_size, num_classes=n_classes, dim=192, 
                     mlp_dim_ratio=2, depth=9, heads=12, dim_head=192//12,
-                    stochastic_depth=args.sd, is_SPT=args.is_SPT, is_LSA=args.is_LSA, is_CL=args.is_CL)
+                    stochastic_depth=args.sd, is_SPT=args.is_SPT, is_LSA=args.is_LSA, is_CL=args.is_CL,
+                    stem_cfg=getattr(args, 'stem_cfg', None))
 
-    elif args.model == 'cait':       
+    elif args.model == 'cait':     
         patch_size = 4 if img_size == 32 else 8
         model = CaiT(img_size=img_size, patch_size = patch_size, num_classes=n_classes, stochastic_depth=args.sd, 
                      is_LSA=args.is_LSA, is_SPT=args.is_SPT, is_CL=args.is_CL)

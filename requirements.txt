@@ -110,6 +110,17 @@ wadllib==1.3.6
 xkit==0.0.0
 zipp==1.0.0
 zope.interface==5.4.0
+
+# --- treino / pipeline Optuna ---
+torchvision
+einops
+timm
 medmnist
-optuna
-scikit-learn
+optuna>=4.0
+fvcore
+pyyaml
+matplotlib
+tabulate
+colorama
+torchsummary
+tensorboard

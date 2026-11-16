@@ -47,7 +47,8 @@ class CosineAnnealingWarmupRestarts(_LRScheduler):
     def init_lr(self):
         self.base_lrs = []
         for param_group in self.optimizer.param_groups:
-            param_group['lr'] = self.min_lr
+            # 'lr_mult' (opcional, padrão 1.0) escala o lr de um grupo (ex.: stem do CL-ViT)
+            param_group['lr'] = self.min_lr * param_group.get('lr_mult', 1.0)
             self.base_lrs.append(self.min_lr)
     
     def get_lr(self):
@@ -86,7 +87,7 @@ class CosineAnnealingWarmupRestarts(_LRScheduler):
         self.max_lr = self.base_max_lr * (self.gamma**self.cycle)
         self.last_epoch = math.floor(epoch)
         for param_group, lr in zip(self.optimizer.param_groups, self.get_lr()):
-            param_group['lr'] = lr
+            param_group['lr'] = lr * param_group.get('lr_mult', 1.0)
 
 def build_scheduler(args, optimizer, n_iter_per_epoch):
     num_steps = int(args.epochs * n_iter_per_epoch)
