@@ -3,4 +3,6 @@ tensorboard/*
 save/*
 venv/*
 data/*
-logs/*
+logs/*optuna_storage/*
+results/*
+reports/*

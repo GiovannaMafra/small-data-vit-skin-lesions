@@ -12,8 +12,30 @@ def pair(t):
 
 # classes
 
+def _conv_bn_gelu(cin, cout, stride):
+    return [
+        nn.Conv2d(cin, cout, kernel_size=3, stride=stride, padding=1, bias=False),
+        nn.BatchNorm2d(cout),
+        nn.GELU()
+    ]
+
+
 class ConvStem(nn.Module):
-    def __init__(self, img_size=32, patch_size=4, in_chans=3, embed_dim=192):
+    """
+    Stem convolucional do CL-ViT.
+
+    Número de convs 3x3 com stride 2 = log2(patch_size) (stride total = patch,
+    logo o número de tokens é o mesmo do ViT/SL-ViT).
+
+    Parâmetros configuráveis (busca da Fase 1). Com `channels=None` o stem é
+    exatamente o original (legado):
+      channels    : largura da 1a conv
+      growth      : 'constant' (todas = channels) | 'double' (dobra a cada conv)
+      extra_conv  : conv 3x3 stride 1 extra (BN+GELU) antes da projeção
+      final_proj  : 'conv1x1' | 'linear' | 'none' (a última conv stride 2 já sai em embed_dim)
+    """
+    def __init__(self, img_size=32, patch_size=4, in_chans=3, embed_dim=192,
+                 channels=None, growth='constant', extra_conv=False, final_proj='none'):
         super().__init__()
         self.img_size = img_size
         self.patch_size = patch_size
@@ -21,27 +43,46 @@ class ConvStem(nn.Module):
 
         # Calcula o número de camadas convolucionais com stride 2 necessário
         num_layers = int(math.log2(patch_size))
-        
+        assert 2 ** num_layers == patch_size, f'patch_size={patch_size} precisa ser potência de 2'
+        self.num_convs = num_layers
+        self.final_proj = final_proj
+        self.proj = None
+
         layers = []
         curr_dim = in_chans
-        
-        for i in range(num_layers):
-            # Projeção gradual de canais até atingir embed_dim
-            out_dim = embed_dim if i == num_layers - 1 else max(64, embed_dim // (2 ** (num_layers - 1 - i)))
-            
-            layers.extend([
-                nn.Conv2d(curr_dim, out_dim, kernel_size=3, stride=2, padding=1, bias=False),
-                nn.BatchNorm2d(out_dim),
-                nn.GELU()
-            ])
-            curr_dim = out_dim
+
+        if channels is None:
+            # ---- Stem legado (comportamento original) ----
+            for i in range(num_layers):
+                # Projeção gradual de canais até atingir embed_dim
+                out_dim = embed_dim if i == num_layers - 1 else max(64, embed_dim // (2 ** (num_layers - 1 - i)))
+                layers.extend(_conv_bn_gelu(curr_dim, out_dim, 2))
+                curr_dim = out_dim
+            self.final_proj = 'none'
+        else:
+            assert growth in ('constant', 'double'), growth
+            assert final_proj in ('conv1x1', 'linear', 'none'), final_proj
+            widths = [channels * (2 ** i if growth == 'double' else 1) for i in range(num_layers)]
+            if final_proj == 'none':
+                widths[-1] = embed_dim
+            for w in widths:
+                layers.extend(_conv_bn_gelu(curr_dim, w, 2))
+                curr_dim = w
+            if extra_conv:
+                layers.extend(_conv_bn_gelu(curr_dim, curr_dim, 1))
+            if final_proj == 'conv1x1':
+                layers.append(nn.Conv2d(curr_dim, embed_dim, kernel_size=1))
+            elif final_proj == 'linear':
+                self.proj = nn.Linear(curr_dim, embed_dim)
 
         self.stem = nn.Sequential(*layers)
 
     def forward(self, x):
         # x: [B, C, H, W]
-        x = self.stem(x) # [B, embed_dim, H/P, W/P]
-        x = x.flatten(2).transpose(1, 2) # [B, N_tokens, embed_dim]
+        x = self.stem(x) # [B, C', H/P, W/P]
+        x = x.flatten(2).transpose(1, 2) # [B, N_tokens, C']
+        if self.proj is not None:
+            x = self.proj(x)  # [B, N_tokens, embed_dim]
         return x
 
 def init_weights(m):
@@ -155,7 +196,8 @@ class Transformer(nn.Module):
 
 class ViT(nn.Module):
     def __init__(self, *, img_size, patch_size, num_classes, dim, depth, heads, mlp_dim_ratio, channels = 3, 
-                 dim_head = 16, dropout = 0., emb_dropout = 0., stochastic_depth=0.,is_LSA=False, is_SPT=False, is_CL=False):
+                 dim_head = 16, dropout = 0., emb_dropout = 0., stochastic_depth=0.,is_LSA=False, is_SPT=False, is_CL=False,
+                 stem_cfg=None):
         super().__init__()
         image_height, image_width = pair(img_size)
         patch_height, patch_width = pair(patch_size)
@@ -170,8 +212,9 @@ class ViT(nn.Module):
             self.to_patch_embedding = ConvStem(
                 img_size=img_size, 
                 patch_size=patch_size, 
-                in_chans=channels, 
-                embed_dim=self.dim
+                in_chans=channels,
+                embed_dim=self.dim,
+                **(stem_cfg or {})  # None -> stem legado
             )
        
         elif not is_SPT:
