@@ -35,7 +35,7 @@ def init_parser():
     # Data args
     parser.add_argument('--data_path', default='./dataset', type=str, help='dataset path')
     
-    parser.add_argument('--dataset', default='CIFAR10', choices=['CIFAR10', 'CIFAR100', 'T-IMNET', 'SVHN'], type=str, help='Image Net dataset path')
+    parser.add_argument('--dataset', default='CIFAR10', choices=['CIFAR10', 'CIFAR100', 'T-IMNET', 'SVHN', 'DermaMNIST'], type=str, help='Image Net dataset path')
 
     parser.add_argument('-j', '--workers', default=4, type=int, metavar='N', help='number of data loading workers (default: 4)')
 
@@ -107,6 +107,8 @@ def init_parser():
     
     parser.add_argument('--is_SPT', action='store_true', help='Shifted Patch Tokenization')
 
+    parser.add_argument('--is_CL', action='store_true', help='Ativa o modelo proposto CL-ViT (ConvStem + LSA)')
+
     return parser
 
 
@@ -134,7 +136,7 @@ def main(args):
         print(Fore.YELLOW + '*'*80)
         logger.debug('label smoothing used')
         print('*'*80+Style.RESET_ALL)
-        criterion = LabelSmoothingCrossEntropy()
+        criterion = LabelSmoothingCrossEntropy(smoothing=args.smoothing)
     
     else:
         criterion = nn.CrossEntropyLoss()    
@@ -450,6 +452,9 @@ if __name__ == '__main__':
  
     if args.is_LSA:
         model_name += "-LSA"
+
+    if args.is_CL:
+        model_name += "-CL"
         
     model_name += f"-{args.tag}-{args.dataset}-LR[{args.lr}]-Seed{args.seed}"
     save_path = os.path.join(os.getcwd(), 'save', model_name)
