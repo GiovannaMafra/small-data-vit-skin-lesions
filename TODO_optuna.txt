@@ -1,0 +1,150 @@
+TODO: Minha parte (tudo que envolve Optuna)
+============================================
+Escopo: Fase 1 (busca do stem do CL-ViT no CIFAR-100 + confirmação dos top-3)
+        Fase 2 (tratamento do desbalanceamento no DermaMNIST para vit, sl_vit e cl_vit)
+Não faço: Fase 3 (final_train). Os colegas rodam, mas dependem do que eu entregar (ver ETAPA 6).
+
+STATUS DO PROJETO
+-----------------
+[x] Reproduções do artigo: vit e sl_vit em CIFAR-100 e Tiny-ImageNet (feitas com o main.py)
+[ ] Fase 1: achar o melhor stem do CL-ViT                    <- eu
+[ ] Fase 2: achar a melhor config de desbalanceamento (Derma) <- eu
+[ ] Fase 3 que falta (final_train.py, 3 seeds cada):          <- grupo
+      cl_vit em CIFAR-100 e Tiny-ImageNet  (precisa da ETAPA 4)
+      cl_vit, vit e sl_vit em DermaMNIST   (precisa da ETAPA 5)
+
+[ ] CONFERIR ANTES de rodar o cl_vit: as reproduções usaram o MESMO protocolo do final_train.py?
+    Senão a tabela compara o cl_vit com os baselines em condições diferentes.
+      [x] lr: as reproduções usaram 0.003, igual ao pipeline (configs/search_spaces.yaml)
+      [x] épocas (100) e nº de seeds (3): iguais
+      [x] métrica: as reproduções reportam a BEST acc. O final_train.py agora salva as duas
+          (final_metrics.json: "test" = última época, "test_best" = melhor época), e o
+          summarize.py mostra a coluna "Acc@1 best (comparável c/ artigo)".
+          -> Para CIFAR-100 e Tiny, comparar o cl_vit com as reproduções pela coluna BEST.
+          -> No relatório, dizer que a best é escolhida no teste (otimista) e mostrar a última
+             época também para os modelos que tiverem.
+          -> DermaMNIST: os 3 modelos rodam com o final_train.py, então dá para usar a última
+             época (protocolo limpo) sem problema de comparação.
+    Não é preciso rerodar vit/sl_vit.
+
+Todos os comandos rodam da RAIZ do repositório, no nó de login do Apuana.
+Marque com [x] o que for concluído.
+
+
+ETAPA 0: Preparar o repositório (na minha máquina)
+---------------------------------------------------
+[x] Corrigir o .gitignore: a linha "logs/*optuna_storage/*" deve virar duas linhas:
+        logs/*
+        optuna_storage/*
+[x] Tirar os __pycache__ do git (estão aparecendo como modificados):
+        git rm -r --cached models/__pycache__ utils/__pycache__
+        echo "__pycache__/" >> .gitignore
+[x] Commit + push da branch pipeline-optuna.
+[ ] Anotar o hash do commit e passar para o grupo: todos devem rodar a partir do MESMO commit
+    (mesma receita, mesmo splits/cifar100_val10_seed0.json, mesmo configs/search_spaces.yaml).
+[ ] Revisar configs/search_spaces.yaml com o grupo ANTES de rodar. Depois que a Fase 2
+    começa, o espaço de busca não pode mudar (os 3 modelos precisam do mesmo espaço):
+        phase2.space: lr [1e-4, 5e-3] log | class_weighting {none, inverse_freq, sqrt_inverse_freq}
+                      | label_smoothing [0, 0.2]
+
+
+ETAPA 1: Ambiente no Apuana (uma vez só)
+-----------------------------------------
+[ ] ssh no login, git clone, git checkout pipeline-optuna (no commit combinado).
+[ ] Criar o venv em ../venv e instalar as dependências (README_optuna.md, passo 2).
+    Conferir: python -c "import torch, optuna; print(torch.cuda.is_available(), optuna.__version__)"
+    (no nó de GPU; o optuna precisa ser >= 4)
+[ ] python download_data.py    -> data/cifar-100-python, data/dermamnist.npz
+    (o Tiny-ImageNet não é usado na minha parte; só baixar se os colegas forem usar a mesma pasta)
+[ ] Preencher os TODOs do slurm/common.sh:
+        DATA_PATH   -> onde ficaram os dados
+        OPTUNA_DIR  -> disco COMPARTILHADO entre os nós (home/projeto, nunca /tmp)
+        RESULTS_DIR -> saída dos trials
+[ ] Preencher o cabeçalho de slurm/phase1_worker.sbatch, phase2_worker.sbatch e
+    confirm_top_stems.sbatch: --partition, --qos, --time, sintaxe de --gres.
+    Confirmar o tempo máximo da partição: sinfo -s / scontrol show partition <nome>
+    Um job da Fase 1 roda vários trials de 30 épocas em sequência. Se não couber no --time,
+    o worker morre (dá para retomar, ver ETAPA 7), mas convém pedir o maior tempo permitido.
+
+
+ETAPA 2: Smoke test (antes de gastar GPU de verdade)
+-----------------------------------------------------
+[ ] mkdir -p logs
+    sbatch --array=0 --export=ALL,N_TRIALS=1,SEARCH_EPOCHS=1,EXTRA_ARGS="--study-name teste_cluster --max-train-samples 512 --max-eval-samples 256" slurm/phase1_worker.sbatch
+[ ] tail -f logs/p1_stem_*_0.out  -> deve aparecer "cuda True" e "Trial 0 finished"
+[ ] Medir o tempo de 1 época real e ajustar o --time (ex.: 1 job com SEARCH_EPOCHS=1 sem os --max-*).
+[ ] Limpar: rm -f "$OPTUNA_DIR"/teste_cluster.log*  e  rm -rf "$RESULTS_DIR"/phase1
+
+
+ETAPA 3: Fase 1, busca do stem (CIFAR-100)
+-------------------------------------------
+[ ] sbatch --array=0-3 slurm/phase1_worker.sbatch
+    (4 workers no mesmo study, 25 trials de 30 épocas no total; o 1º trial é o stem original)
+    Opcional multiobjetivo (acurácia x custo): --export=ALL,EXTRA_ARGS="--multiobjective"
+[ ] Acompanhar: squeue -u $USER ; tail -f logs/p1_stem_<job>_<i>.out
+[ ] Checar se o study fechou: 25 trials COMPLETE+PRUNED
+        optuna trials --storage-class JournalFileBackend --storage $OPTUNA_DIR/phase1_stem_cifar100.log --study-name phase1_stem_cifar100
+
+
+ETAPA 4: Confirmação dos top-3 stems + finalize
+------------------------------------------------
+[ ] sbatch --array=0-2 slurm/confirm_top_stems.sbatch      (100 épocas para cada candidato)
+[ ] Quando os 3 terminarem:  sbatch slurm/confirm_top_stems.sbatch   (finalize)
+[ ] Conferir se configs/cl_vit_stem_final.yaml foi criado e se faz sentido
+    (results/confirm/confirm_summary.json).
+[ ] git add configs/cl_vit_stem_final.yaml && git commit && git push
+[ ] AVISAR O GRUPO: com esse arquivo a Fase 3 do cl_vit (CIFAR-100/Tiny) já pode começar.
+
+
+ETAPA 5: Fase 2, desbalanceamento no DermaMNIST (3 modelos, mesmo espaço/trials/seed)
+---------------------------------------------------------------------------------------
+vit e sl_vit NÃO dependem da Fase 1: dá para submeter junto com a ETAPA 3.
+[ ] sbatch --array=0-1 --export=ALL,MODEL=vit    slurm/phase2_worker.sbatch
+[ ] sbatch --array=0-1 --export=ALL,MODEL=sl_vit slurm/phase2_worker.sbatch
+cl_vit só DEPOIS da ETAPA 4 (precisa do cl_vit_stem_final.yaml):
+[ ] sbatch --array=0-1 --export=ALL,MODEL=cl_vit slurm/phase2_worker.sbatch
+[ ] Os 3 studies precisam fechar com 20 trials: phase2_derma_vit, phase2_derma_sl_vit, phase2_derma_cl_vit
+    NÃO mudar N_TRIALS, SEARCH_EPOCHS nem --sampler-seed entre os modelos (comparação justa).
+[ ] Para cada modelo, anotar o melhor trial (aparece no fim do log "[fase 2] ... melhor trial"):
+    F1 macro, AUC, recall de melanoma, class_weighting escolhido.
+
+
+ETAPA 6: Entregar para o grupo (quem roda a Fase 3)
+----------------------------------------------------
+O final_train.py no DermaMNIST lê os hiperparâmetros direto do study da Fase 2
+(--params-from study:phase2_derma_<modelo>), então os colegas precisam dos journals.
+[ ] Gerar o relatório:
+        python scripts/summarize.py --storage-dir $OPTUNA_DIR --results-dir $RESULTS_DIR --out reports
+[ ] Passar para o grupo:
+        - configs/cl_vit_stem_final.yaml (já no git, ETAPA 4)
+        - $OPTUNA_DIR/phase2_derma_vit.log, phase2_derma_sl_vit.log, phase2_derma_cl_vit.log
+          (cada um coloca no próprio OPTUNA_DIR, ou aponta --storage-dir para uma pasta compartilhada)
+        - $OPTUNA_DIR/phase1_stem_cifar100.log (para o relatório)
+        - reports/ (summary.md, top-k, importância, gráficos)
+[ ] Comandos da Fase 3 que falta, para passar ao grupo:
+        # cl_vit em CIFAR-100 e Tiny (depois da ETAPA 4, com git pull do yaml)
+        sbatch --array=0-5 --export=ALL,MODELS=cl_vit,DATASETS="cifar100 tiny_imagenet",SEEDS="0 1 2" slurm/final_train.sbatch
+        # DermaMNIST nos 3 modelos (depois da ETAPA 5, com os journals no OPTUNA_DIR)
+        sbatch --array=0-8 --export=ALL,MODELS="vit sl_vit cl_vit",DATASETS=dermamnist,SEEDS="0 1 2" slurm/final_train.sbatch
+[ ] Conferir com os colegas: o comando da Fase 3 Derma deles deve imprimir
+    hparams "_source": "phase2_derma_<modelo>#trial<N>" no config.json.
+
+
+ETAPA 7: Se algo der errado
+----------------------------
+- Worker morreu (tempo/queda): ressubmeter o MESMO sbatch. O study continua (load_if_exists) e
+  os trials RUNNING de worker morto não contam no total.
+- OOM vira trial FAIL e NaN vira PRUNED. O worker segue; o motivo fica em user_attrs.fail_reason.
+  Muitos FAIL seguidos: diminuir batch ou checar --mem.
+- Se o worker da Fase 1 morrer, o afterok não dispara: submeter a confirmação e o finalize à mão.
+- Ver o andamento visualmente: optuna-dashboard $OPTUNA_DIR/<study>.log --port 8080
+  + ssh -L 8080:localhost:8080 <usuario>@<login>
+
+
+ETAPA 8: Material para o relatório/apresentação (minha parte)
+--------------------------------------------------------------
+[ ] Fase 1: tabela dos top-3 stems (acurácia na val, custo vs SPT) e o vencedor; gráfico de histórico;
+    importância dos hiperparâmetros; fronteira de Pareto se usar --multiobjective.
+[ ] Fase 2: por modelo, o melhor trial (F1 macro, AUC, recall de melanoma, matriz de confusão na val)
+    e qual class_weighting venceu; importância dos hiperparâmetros (lr x weighting x smoothing).
+[ ] Deixar claro no texto: a Fase 2 usa a val oficial do DermaMNIST e o teste só é usado na Fase 3.

@@ -3,6 +3,9 @@ tensorboard/*
 save/*
 venv/*
 data/*
-logs/*optuna_storage/*
+logs/*
+optuna_storage/*
 results/*
 reports/*
+__pycache__/
+*.pyc
