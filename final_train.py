@@ -68,6 +68,9 @@ def main():
     out = {'model': args.model, 'dataset': args.dataset, 'seed': args.seed, 'params_from': params_from,
            'hparams': hp, 'epochs': args.epochs, 'metric_epoch': 'last',
            'test': result['final'],  # métricas da última época, avaliadas uma vez no teste
+           # melhor época no teste (pelo monitor: acc1, ou f1_macro no Derma). Serve só para comparar
+           # com as reproduções e com o artigo, que reportam a best acc; é otimista (escolhida no teste).
+           'test_best': result['best'], 'best_monitor': result['monitor'],
            **{k: result[k] for k in ('model_params', 'model_flops', 'stem_params', 'stem_flops', 'n_tokens',
                                      'throughput_img_s', 'n_train', 'n_eval', 'eval_split', 'class_weights')}}
     save_json(out, final_path)

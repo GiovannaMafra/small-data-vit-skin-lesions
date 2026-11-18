@@ -100,6 +100,9 @@ def final_table(results_dir, out_dir):
         for k, _ in FINAL_METRICS:
             if k in r['test']:
                 row[k] = r['test'][k]
+        best = r.get('test_best') or {}
+        if 'eval_acc1' in best:  # época escolhida pelo monitor (acc1; f1_macro no Derma)
+            row['acc1_best'] = best['eval_acc1']
         rows.append(row)
     if not rows:
         return '_sem resultados finais ainda_'
@@ -118,6 +121,10 @@ def final_table(results_dir, out_dir):
                     v = gm[k].astype(float)
                     r[dict(FINAL_METRICS)[k]] = f'{v.mean():.2f} ± {v.std(ddof=1) if len(v) > 1 else 0:.2f}' \
                         if k == 'acc1' else f'{v.mean():.4f} ± {v.std(ddof=1) if len(v) > 1 else 0:.4f}'
+                if k == 'acc1' and 'acc1_best' in gm and gm['acc1_best'].notna().any():
+                    v = gm['acc1_best'].dropna().astype(float)
+                    r['Acc@1 best (comparável c/ artigo)'] = \
+                        f'{v.mean():.2f} ± {v.std(ddof=1) if len(v) > 1 else 0:.2f}'
             r['Params (M)'] = f"{gm['params'].iloc[0] / 1e6:.2f}"
             r['FLOPs (M)'] = f"{gm['flops'].iloc[0] / 1e6:.1f}"
             r['Vazão (img/s)'] = f"{gm['throughput'].mean():.0f}"
