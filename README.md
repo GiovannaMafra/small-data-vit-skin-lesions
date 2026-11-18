@@ -43,7 +43,27 @@ results/                   um JSON/CSV por execução
 ```bash
 git clone <URL-DESTE-REPOSITORIO>
 cd <pasta>
-pip install -r requirements.txt   # ajuste se necessário
+python -m venv venv && source venv/bin/activate
+```
+
+**1. PyTorch com CUDA.** `torch` e `torchvision` ficam fora do `requirements.txt` porque o wheel certo depende da versão de CUDA da máquina. Veja a versão máxima suportada pelo driver no canto superior direito de `nvidia-smi` e escolha o índice correspondente (lista completa em <https://pytorch.org/get-started/locally/>):
+
+```bash
+# CUDA 12.6
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+# CUDA 13.0
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
+# só CPU
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# confira se a GPU foi reconhecida
+python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+```
+
+**2. Demais dependências e execução.** Instale o torch primeiro: assim o `pip` não troca o wheel CUDA por outro ao resolver `timm`, `torchsummary` etc.
+
+```bash
+pip install -r requirements.txt
 # exemplo (confira os argumentos com: python main.py --help)
 python main.py --model vit --dataset CIFAR100 --lr 0.003
 python main.py --model vit --dataset CIFAR100 --lr 0.001 --is_SPT --is_LSA
