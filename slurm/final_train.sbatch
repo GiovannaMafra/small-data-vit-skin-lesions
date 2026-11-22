@@ -5,14 +5,13 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=16G
-# TODO: confirmar sintaxe de GPU no Apuana
+# GPU (Apuana: todas as partições têm GPU; sintaxe gres/gpu)
 #SBATCH --gres=gpu:1
-# TODO: partição (o script.sh atual usa: -p short-simple)
-##SBATCH --partition=<PARTICAO>
-# TODO: QoS (o script.sh atual usa: --qos=simple)
-##SBATCH --qos=<QOS>
-# TODO: tempo máximo permitido na partição
-##SBATCH --time=<HH:MM:SS>
+# Partição: short-simple (MaxTime 2-00:00:00, exige QoS simple). A padrão (debug) só tem 30 min.
+#SBATCH --partition=short-simple
+#SBATCH --qos=simple
+# Tempo: limite da short-simple (os scripts retomam do journal do Optuna / pulam o que já terminou)
+#SBATCH --time=2-00:00:00
 # Fase 3: array sobre o produto MODELS x DATASETS x SEEDS (listas separadas por espaço).
 # Uso: sbatch --array=0-N --export=ALL,MODELS="vit sl_vit",DATASETS="cifar100",SEEDS="0 1 2" slurm/final_train.sbatch
 source slurm/common.sh

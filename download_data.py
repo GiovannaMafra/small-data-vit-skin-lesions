@@ -56,10 +56,16 @@ def download_tiny_imagenet():
 
     print("\n--- [2/3] Verificando Tiny-ImageNet-200 ---")
 
-    # 1. Checa se a pasta descompactada já existe
-    if os.path.exists(tiny_folder):
+    # 1. Checa se a pasta descompactada já existe E está completa (uma extração interrompida
+    #    deixa a pasta parcial: sem val/ ou com menos de 200 classes no train/)
+    train_dir = os.path.join(tiny_folder, "train")
+    complete = (os.path.exists(os.path.join(tiny_folder, "val", "val_annotations.txt"))
+                and os.path.isdir(train_dir) and len(os.listdir(train_dir)) == 200)
+    if complete:
         print(f"[✓] Tiny-ImageNet já está extraído e pronto em: {tiny_folder}")
         return
+    if os.path.exists(tiny_folder):
+        print(f"[!] {tiny_folder} existe mas está incompleto; extraindo de novo.")
 
     # 2. Baixa se o zip não existir
     url = "http://cs231n.stanford.edu/tiny-imagenet-200.zip"

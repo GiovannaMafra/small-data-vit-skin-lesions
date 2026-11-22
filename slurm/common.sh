@@ -12,8 +12,8 @@ nvidia-smi || echo "[aviso] nvidia-smi indisponível"
 # TODO: módulos do cluster, se necessário (ex.: module load ...). Não sei quais existem no Apuana.
 # module load <...>
 
-# TODO: ativação do ambiente. O script.sh atual usa um venv fora do repositório:
-source "${VENV_ACTIVATE:-../venv/bin/activate}"
+# Ativação do ambiente: .venv na raiz do repositório (sobrescreva com VENV_ACTIVATE=...)
+source "${VENV_ACTIVATE:-.venv/bin/activate}"
 # (alternativa conda: source ~/miniconda3/etc/profile.d/conda.sh && conda activate <env>)
 
 # TODO: caminhos no cluster
