@@ -43,7 +43,7 @@ echo "Modelo: ViT | Dataset: TinyImageNet"
 
 #SL-ViT (Modelo Completo do Artigo: SPT + LSA)
 #python main.py --model vit --is_SPT --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 42
-#python main.py --model vit --is_SPT --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 43
-python main.py --model vit --is_SPT --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 44
+python main.py --model vit --is_SPT --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 43
+#python main.py --model vit --is_SPT --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 44
 
 echo "Treinamento finalizado em: $(date)"
