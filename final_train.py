@@ -22,7 +22,7 @@ from utils.pipeline import (DEFAULT_STEM_FINAL, common_parser, get_storage, load
 
 def parse():
     p = common_parser(__doc__)
-    p.add_argument('--model', required=True, choices=['vit', 'sl_vit', 'cl_vit'])
+    p.add_argument('--model', required=True, choices=['vit', 's_vit', 'l_vit', 'sl_vit', 'cl_vit'])
     p.add_argument('--dataset', required=True, choices=['cifar100', 'tiny_imagenet', 'dermamnist'])
     p.add_argument('--params-from', default=None, help='paper | study:<nome>')
     p.add_argument('--epochs', type=int, default=100)

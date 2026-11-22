@@ -109,7 +109,7 @@ def final_table(results_dir, out_dir):
     df = pd.DataFrame(rows).sort_values(['dataset', 'model', 'seed'])
     df.to_csv(os.path.join(out_dir, 'final_runs.csv'), index=False)
 
-    order = {'vit': 0, 'sl_vit': 1, 'cl_vit': 2}
+    order = {'vit': 0, 's_vit': 1, 'l_vit': 2, 'sl_vit': 3, 'cl_vit': 4}
     out = []
     for ds, g in df.groupby('dataset'):
         metrics = ['acc1'] if ds != 'dermamnist' else [k for k, _ in FINAL_METRICS]

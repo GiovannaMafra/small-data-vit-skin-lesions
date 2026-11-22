@@ -39,6 +39,8 @@ if not logger.handlers:
 # Nome no pipeline -> flags do main.py
 MODEL_FLAGS = {
     'vit':    dict(model='vit', is_SPT=False, is_LSA=False, is_CL=False),
+    's_vit':  dict(model='vit', is_SPT=True,  is_LSA=False, is_CL=False),  # ablação: só SPT
+    'l_vit':  dict(model='vit', is_SPT=False, is_LSA=True,  is_CL=False),  # ablação: só LSA
     'sl_vit': dict(model='vit', is_SPT=True,  is_LSA=True,  is_CL=False),
     'cl_vit': dict(model='vit', is_SPT=False, is_LSA=False, is_CL=True),   # is_CL ativa o LSA
 }

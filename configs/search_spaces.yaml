@@ -6,6 +6,8 @@
 recipe:
   lr:              # lr da receita (igual para todos os ViTs)
     vit: 0.003
+    s_vit: 0.003
+    l_vit: 0.003
     sl_vit: 0.003
     cl_vit: 0.003
   overrides: {}    # outros args do main.py para sobrescrever em todas as fases (ex.: {workers: 8})

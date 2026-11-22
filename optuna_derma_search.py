@@ -20,7 +20,7 @@ from utils.pipeline import (DEFAULT_STEM_FINAL, add_optuna_args, common_parser, 
 def parse():
     p = common_parser(__doc__)
     add_optuna_args(p, n_trials=20, epochs=30)
-    p.add_argument('--model', required=True, choices=['vit', 'sl_vit', 'cl_vit'])
+    p.add_argument('--model', required=True, choices=['vit', 's_vit', 'l_vit', 'sl_vit', 'cl_vit'])
     p.add_argument('--stem-config', default=DEFAULT_STEM_FINAL)
     p.add_argument('--study-name', default=None, help='padrão: phase2_derma_{model}')
     return p.parse_args()
