@@ -24,6 +24,8 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 import warnings
 warnings.filterwarnings("ignore", category=Warning)
+import numpy as np
+from utils.dataloader import derma_eval_dataset
 
 best_acc1 = 0
 MODELS = ['vit', 'swin', 'pit', 'cait', 't2t']
@@ -35,7 +37,7 @@ def init_parser():
     # Data args
     parser.add_argument('--data_path', default='./dataset', type=str, help='dataset path')
     
-    parser.add_argument('--dataset', default='CIFAR10', choices=['CIFAR10', 'CIFAR100', 'T-IMNET', 'SVHN'], type=str, help='Image Net dataset path')
+    parser.add_argument('--dataset', default='CIFAR10', choices=['CIFAR10', 'CIFAR100', 'T-IMNET', 'SVHN', 'DERMA'], type=str, help='Image Net dataset path')
 
     parser.add_argument('-j', '--workers', default=4, type=int, metavar='N', help='number of data loading workers (default: 4)')
 
@@ -107,8 +109,20 @@ def init_parser():
     
     parser.add_argument('--is_SPT', action='store_true', help='Shifted Patch Tokenization')
 
+    parser.add_argument('--derma_aug', default='geom', choices=['geom', 'standard'])
+
+    parser.add_argument('--eval_split', default='val', choices=['val', 'test'])
+
     return parser
 
+@torch.no_grad()
+def predict_logits(model, dataset, device, bs=256):
+    model.eval()
+    loader = torch.utils.data.DataLoader(dataset, batch_size=bs, shuffle=False, num_workers=2)
+    outs, ys = [], []
+    for x, y in loader:
+        outs.append(model(x.to(device)).float().cpu()); ys.append(y)
+    return torch.cat(outs).numpy(), torch.cat(ys).numpy()
 
 def main(args):
     global best_acc1    
@@ -276,7 +290,13 @@ def main(args):
         print(Style.RESET_ALL)        
         
         writer.add_scalar("Learning Rate", lr, epoch)
-        
+
+        if args.dataset == 'DERMA':
+            dev = next(model.parameters()).device
+            for split in ('val', 'test'):
+                lg, yy = predict_logits(model, derma_eval_dataset(args, data_info, normalize, split), dev)
+                np.save(os.path.join(save_path, f'logits_{split}.npy'), lg)
+                np.save(os.path.join(save_path, f'labels_{split}.npy'), yy)
         
     print(Fore.RED+'*'*80)
     logger.debug(f'best top-1: {best_acc1:.2f}, final top-1: {acc1:.2f}')

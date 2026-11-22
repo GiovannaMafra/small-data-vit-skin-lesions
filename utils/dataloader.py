@@ -3,6 +3,11 @@ from colorama import Fore, Style
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 
+from torchvision.transforms import InterpolationMode
+
+def squeeze_label(y):                      # o medmnist devolve o rótulo como array [1]
+    return int(y[0])                       # função nomeada (lambda dá problema com workers)
+
 def datainfo(logger, args):
     if args.dataset == 'CIFAR10':
         print(Fore.YELLOW+'*'*80)
@@ -35,6 +40,14 @@ def datainfo(logger, args):
         n_classes = 200
         img_mean, img_std = (0.4802, 0.4481, 0.3975), (0.2770, 0.2691, 0.2821)
         img_size = 64
+
+    elif args.dataset == 'DERMA':
+        print(Fore.YELLOW+'*'*80)
+        logger.debug('DERMA')
+        print('*'*80 + Style.RESET_ALL)
+        n_classes = 7
+        img_mean, img_std = (0.763099, 0.538066, 0.561366), (0.135438, 0.152966, 0.167904)
+        img_size = 32
         
     data_info = dict()
     data_info['n_classes'] = n_classes
@@ -42,6 +55,30 @@ def datainfo(logger, args):
     data_info['img_size'] = img_size
     
     return data_info
+
+def _derma_resize(data_info):
+    s = data_info['img_size']
+    return transforms.Resize((s, s), interpolation=InterpolationMode.BILINEAR)
+
+def derma_eval_dataset(args, data_info, normalize, split):
+    from medmnist import DermaMNIST
+    tf = transforms.Compose([_derma_resize(data_info), transforms.ToTensor(), *normalize])
+    return DermaMNIST(split=split, transform=tf, download=False, root=args.data_path,
+                      size=28, target_transform=squeeze_label)
+
+def derma_train_dataset(args, augmentations, normalize, data_info):
+    from medmnist import DermaMNIST
+    rs, s = _derma_resize(data_info), data_info['img_size']
+    if getattr(args, 'derma_aug', 'geom') == 'geom':      # receita adaptada: só geometria, sem cor
+        tf = transforms.Compose([
+            rs, transforms.RandomHorizontalFlip(), transforms.RandomVerticalFlip(),
+            transforms.RandomChoice([transforms.RandomRotation((a, a)) for a in (0, 90, 180, 270)]),
+            transforms.RandomCrop(s, padding=2, padding_mode='reflect'),
+            transforms.ToTensor(), *normalize])
+    else:                                                  # receita padrão do repositório (controle)
+        tf = transforms.Compose([rs, augmentations])
+    return DermaMNIST(split='train', transform=tf, download=False, root=args.data_path,
+                      size=28, target_transform=squeeze_label)
 
 def dataload(args, augmentations, normalize, data_info):
     if args.dataset == 'CIFAR10':
@@ -80,5 +117,9 @@ def dataload(args, augmentations, normalize, data_info):
             root=os.path.join(args.data_path, 'tiny_imagenet', 'val'), 
             transform=transforms.Compose([
             transforms.Resize(data_info['img_size']), transforms.ToTensor(), *normalize]))
+    
+    elif args.dataset == 'DERMA':
+        train_dataset = derma_train_dataset(args, augmentations, normalize, data_info)
+        val_dataset = derma_eval_dataset(args, data_info, normalize, getattr(args, 'eval_split', 'val'))
     
     return train_dataset, val_dataset
