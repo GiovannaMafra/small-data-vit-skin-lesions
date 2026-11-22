@@ -4,12 +4,45 @@ from utils.drop_path import DropPath
 from einops import rearrange, repeat
 from einops.layers.torch import Rearrange
 from .SPT import ShiftedPatchTokenization
+import math
 # helpers
  
 def pair(t):
     return t if isinstance(t, tuple) else (t, t)
 
 # classes
+
+class ConvStem(nn.Module):
+    def __init__(self, img_size=32, patch_size=4, in_chans=3, embed_dim=192):
+        super().__init__()
+        self.img_size = img_size
+        self.patch_size = patch_size
+        self.num_patches = (img_size // patch_size) ** 2
+
+        # Calcula o número de camadas convolucionais com stride 2 necessário
+        num_layers = int(math.log2(patch_size))
+        
+        layers = []
+        curr_dim = in_chans
+        
+        for i in range(num_layers):
+            # Projeção gradual de canais até atingir embed_dim
+            out_dim = embed_dim if i == num_layers - 1 else max(64, embed_dim // (2 ** (num_layers - 1 - i)))
+            
+            layers.extend([
+                nn.Conv2d(curr_dim, out_dim, kernel_size=3, stride=2, padding=1, bias=False),
+                nn.BatchNorm2d(out_dim),
+                nn.GELU()
+            ])
+            curr_dim = out_dim
+
+        self.stem = nn.Sequential(*layers)
+
+    def forward(self, x):
+        # x: [B, C, H, W]
+        x = self.stem(x) # [B, embed_dim, H/P, W/P]
+        x = x.flatten(2).transpose(1, 2) # [B, N_tokens, embed_dim]
+        return x
 
 def init_weights(m):
     if isinstance(m, (nn.Linear, nn.Conv2d)):
@@ -122,7 +155,7 @@ class Transformer(nn.Module):
 
 class ViT(nn.Module):
     def __init__(self, *, img_size, patch_size, num_classes, dim, depth, heads, mlp_dim_ratio, channels = 3, 
-                 dim_head = 16, dropout = 0., emb_dropout = 0., stochastic_depth=0.,is_LSA=False, is_SPT=False):
+                 dim_head = 16, dropout = 0., emb_dropout = 0., stochastic_depth=0.,is_LSA=False, is_SPT=False, is_CL=False):
         super().__init__()
         image_height, image_width = pair(img_size)
         patch_height, patch_width = pair(patch_size)
@@ -130,8 +163,18 @@ class ViT(nn.Module):
         self.patch_dim = channels * patch_height * patch_width
         self.dim = dim
         self.num_classes = num_classes
+
+        # 1. Seleção do Módulo de Patch Embedding / Stem
+        if is_CL:
+            # CL-ViT: Usa ConvStem no lugar do PatchEmbedding / SPT
+            self.to_patch_embedding = ConvStem(
+                img_size=img_size, 
+                patch_size=patch_size, 
+                in_chans=channels, 
+                embed_dim=self.dim
+            )
        
-        if not is_SPT:
+        elif not is_SPT:
             self.to_patch_embedding = nn.Sequential(
                 Rearrange('b c (h p1) (w p2) -> b (h w) (p1 p2 c)', p1 = patch_height, p2 = patch_width),
                 nn.Linear(self.patch_dim, self.dim)
@@ -139,13 +182,25 @@ class ViT(nn.Module):
             
         else:
             self.to_patch_embedding = ShiftedPatchTokenization(3, self.dim, patch_size, is_pe=True)
-         
+
+        # 2. Embeddings Posicionais e Token CLS
         self.pos_embedding = nn.Parameter(torch.randn(1, self.num_patches + 1, self.dim))
-            
         self.cls_token = nn.Parameter(torch.randn(1, 1, self.dim))
         self.dropout = nn.Dropout(emb_dropout)
-        self.transformer = Transformer(self.dim, self.num_patches, depth, heads, dim_head, mlp_dim_ratio, dropout, 
-                                       stochastic_depth, is_LSA=is_LSA)
+
+        # 3. Backbone do Transformer (O CL-ViT exige LSA ativado)
+        use_lsa = is_LSA or is_CL
+        self.transformer = Transformer(
+            self.dim, 
+            self.num_patches, 
+            depth, 
+            heads, 
+            dim_head, 
+            mlp_dim_ratio, 
+            dropout, 
+            stochastic_depth, 
+            is_LSA=use_lsa
+        )                             
 
         self.mlp_head = nn.Sequential(
             nn.LayerNorm(self.dim),
