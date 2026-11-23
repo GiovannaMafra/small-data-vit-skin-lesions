@@ -28,7 +28,7 @@ echo "Modelo: ViT | Dataset: TinyImageNet"
 #ViT Puro (Baseline)
 #testar com seed diferentes (tirar a media depois)
 #python main.py --model vit --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 42
-#python main.py --model vit --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 43
+python main.py --model vit --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 43
 #python main.py --model vit --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 44
 
 #S-ViT (Apenas com SPT)
@@ -38,7 +38,7 @@ echo "Modelo: ViT | Dataset: TinyImageNet"
 
 #L-ViT (Apenas com LSA)
 #python main.py --model vit --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 42
-python main.py --model vit --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 43
+#python main.py --model vit --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 43
 #python main.py --model vit --is_LSA --dataset T-IMNET --data_path ./data --epochs 100 --lr 0.003 --seed 44
 
 #SL-ViT (Modelo Completo do Artigo: SPT + LSA)
