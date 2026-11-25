@@ -1,6 +1,0 @@
-/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/.venv/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/.venv/lib/python3.10/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
-  warnings.warn(
-[engine] cl_vit CIFAR100 | params=2,869,552 flops=199,618,992 | stem params=169,056 flops=11,354,112 tokens=64 | train=512 eval=256 (val) | device=cuda
-[epoch 1/1] train_loss=4.9710 eval_acc1=0.39 f1=0.0001 auc=0.5308 lr=3.00e-03

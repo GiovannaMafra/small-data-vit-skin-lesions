@@ -5,10 +5,8 @@ venv/*
 data/*
 optuna_storage/*
 results/**/*.pth
-results/final/dermamnist/vit/seed0/
-results/final/dermamnist/vit/seed1/
+logs/smoke/
 slurm-*.out
-reports/*
 __pycache__/
 *.pyc
 .venv/
