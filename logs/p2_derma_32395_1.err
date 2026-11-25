@@ -1,0 +1,3 @@
+/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/.venv/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[I 2026-11-20 19:26:02,504] Using an existing study with `study_name='smoke_phase2_derma_sl_vit'` instead of creating a new one.

@@ -1,0 +1,13 @@
+/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/.venv/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/.venv/lib/python3.10/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+[engine] vit DermaMNIST | params=2,691,847 flops=188,836,848 | stem params=9,408 flops=589,824 tokens=64 | train=7007 eval=2005 (test) | device=cuda
+[epoch 1/100] train_loss=1.8203 eval_acc1=66.78 f1=0.1145 auc=0.7255 lr=1.26e-04
+[epoch 2/100] train_loss=1.7727 eval_acc1=66.88 f1=0.1145 auc=0.7148 lr=2.51e-04
+[epoch 3/100] train_loss=1.7378 eval_acc1=67.13 f1=0.1559 auc=0.8039 lr=3.76e-04
+[epoch 4/100] train_loss=1.7391 eval_acc1=66.28 f1=0.1228 auc=0.8225 lr=5.01e-04
+[epoch 5/100] train_loss=1.7127 eval_acc1=67.83 f1=0.1813 auc=0.8306 lr=6.26e-04
+[epoch 6/100] train_loss=1.7076 eval_acc1=63.99 f1=0.2801 auc=0.8397 lr=7.51e-04
+[epoch 7/100] train_loss=1.6794 eval_acc1=66.73 f1=0.2246 auc=0.8441 lr=8.76e-04
+slurmstepd: error: *** JOB 32618 ON cluster-node6 CANCELLED AT 2026-11-22T13:11:20 ***

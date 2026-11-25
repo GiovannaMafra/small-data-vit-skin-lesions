@@ -3,11 +3,12 @@ tensorboard/*
 save/*
 venv/*
 data/*
-logs/*
 optuna_storage/*
-results/*
+results/**/*.pth
+results/final/dermamnist/vit/seed0/
+results/final/dermamnist/vit/seed1/
+slurm-*.out
 reports/*
 __pycache__/
 *.pyc
 .venv/
-!logs/.gitkeep

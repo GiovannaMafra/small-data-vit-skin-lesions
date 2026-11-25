@@ -1,0 +1,31 @@
+{
+ "trial": 13,
+ "study": "phase2_derma_cl_vit",
+ "params": {
+  "lr": 0.0007312372200547594,
+  "class_weighting": "sqrt_inverse_freq",
+  "label_smoothing": 0.005244733818033689
+ },
+ "config": {
+  "model": "cl_vit",
+  "dataset": "dermamnist",
+  "lr": 0.0007312372200547594,
+  "data_path": "./data",
+  "workers": 8,
+  "seed": 0,
+  "stem_cfg": {
+   "channels": 48,
+   "growth": "double",
+   "extra_conv": true,
+   "final_proj": "linear"
+  },
+  "stem_lr_mult": 0.7886956769485728,
+  "smoothing": 0.005244733818033689,
+  "class_weighting": "sqrt_inverse_freq",
+  "epochs": 30,
+  "eval_split": "val",
+  "monitor": "f1_macro",
+  "save_ckpt": "best",
+  "out_dir": "./results/phase2/cl_vit/trial_0013"
+ }
+}

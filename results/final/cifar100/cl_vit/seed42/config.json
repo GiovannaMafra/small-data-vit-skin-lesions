@@ -1,0 +1,27 @@
+{
+ "model": "cl_vit",
+ "dataset": "cifar100",
+ "seed": 42,
+ "params_from": "paper",
+ "hparams": {},
+ "config": {
+  "model": "cl_vit",
+  "dataset": "cifar100",
+  "lr": 0.003,
+  "data_path": "./data",
+  "workers": 8,
+  "seed": 42,
+  "epochs": 100,
+  "eval_split": "test",
+  "monitor": "acc1",
+  "save_ckpt": "last",
+  "out_dir": "./results/final/cifar100/cl_vit/seed42",
+  "stem_cfg": {
+   "channels": 48,
+   "growth": "double",
+   "extra_conv": true,
+   "final_proj": "linear"
+  },
+  "stem_lr_mult": 0.7886956769485728
+ }
+}

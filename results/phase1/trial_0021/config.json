@@ -1,0 +1,32 @@
+{
+ "trial": 21,
+ "study": "phase1_stem_cifar100",
+ "params": {
+  "stem_channels": 48,
+  "stem_channel_growth": "double",
+  "stem_extra_conv": true,
+  "stem_final_proj": "linear",
+  "stem_lr_mult": 0.7886956769485728
+ },
+ "config": {
+  "model": "cl_vit",
+  "dataset": "cifar100",
+  "lr": 0.003,
+  "data_path": "./data",
+  "workers": 8,
+  "seed": 0,
+  "stem_cfg": {
+   "channels": 48,
+   "growth": "double",
+   "extra_conv": true,
+   "final_proj": "linear"
+  },
+  "stem_lr_mult": 0.7886956769485728,
+  "epochs": 30,
+  "eval_split": "val",
+  "monitor": "acc1",
+  "save_ckpt": "best",
+  "out_dir": "./results/phase1/trial_0021"
+ },
+ "split_file": "splits/cifar100_val10_seed0.json"
+}
