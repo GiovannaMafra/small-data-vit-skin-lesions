@@ -1,0 +1,5 @@
+/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/.venv/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[I 2026-11-22 05:24:54,915] Using an existing study with `study_name='phase1_stem_cifar100'` instead of creating a new one.
+/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/optuna_stem_search.py:61: ExperimentalWarning: optuna.study.study.Study.set_metric_names is experimental (supported from v3.2.0). The interface can change in the future.
+  study.set_metric_names(['val_acc1', 'stem_flops'] if args.multiobjective else ['val_acc1'])

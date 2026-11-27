@@ -1,0 +1,438 @@
+/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/.venv/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[I 2026-11-22 10:34:10,564] A new study created in Journal with name: phase2_derma_cl_vit
+/home/CIN/lrf2/projetos/small-data-vit-skin-lesions/.venv/lib/python3.10/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.3968 eval_acc1=66.90 f1=0.1145 auc=0.7840 lr=8.65e-05
+[epoch 2/30] train_loss=1.2494 eval_acc1=67.00 f1=0.1196 auc=0.8251 lr=1.72e-04
+[epoch 3/30] train_loss=1.2368 eval_acc1=66.90 f1=0.1734 auc=0.8249 lr=2.57e-04
+[epoch 4/30] train_loss=1.2257 eval_acc1=66.50 f1=0.1473 auc=0.8485 lr=3.43e-04
+[epoch 5/30] train_loss=1.2109 eval_acc1=67.20 f1=0.1451 auc=0.8690 lr=4.28e-04
+[epoch 6/30] train_loss=1.2075 eval_acc1=69.59 f1=0.2407 auc=0.8734 lr=5.14e-04
+[epoch 7/30] train_loss=1.1839 eval_acc1=68.30 f1=0.1772 auc=0.8942 lr=5.99e-04
+[epoch 8/30] train_loss=1.1893 eval_acc1=70.09 f1=0.2239 auc=0.8861 lr=6.85e-04
+[epoch 9/30] train_loss=1.1802 eval_acc1=71.09 f1=0.2378 auc=0.8977 lr=7.70e-04
+[epoch 10/30] train_loss=1.1698 eval_acc1=70.19 f1=0.2610 auc=0.9005 lr=8.56e-04
+[epoch 11/30] train_loss=1.1733 eval_acc1=69.79 f1=0.2287 auc=0.9037 lr=8.51e-04
+[epoch 12/30] train_loss=1.1613 eval_acc1=72.58 f1=0.3871 auc=0.9069 lr=8.35e-04
+[epoch 13/30] train_loss=1.1554 eval_acc1=71.19 f1=0.3081 auc=0.9016 lr=8.09e-04
+[epoch 14/30] train_loss=1.1503 eval_acc1=71.78 f1=0.3473 auc=0.8956 lr=7.74e-04
+[epoch 15/30] train_loss=1.1428 eval_acc1=72.68 f1=0.3569 auc=0.9126 lr=7.31e-04
+[epoch 16/30] train_loss=1.1507 eval_acc1=72.68 f1=0.3836 auc=0.9100 lr=6.80e-04
+[epoch 17/30] train_loss=1.1382 eval_acc1=71.09 f1=0.3399 auc=0.9198 lr=6.23e-04
+[epoch 18/30] train_loss=1.1297 eval_acc1=72.58 f1=0.3514 auc=0.9090 lr=5.61e-04
+[epoch 19/30] train_loss=1.1240 eval_acc1=72.58 f1=0.3369 auc=0.9131 lr=4.95e-04
+[epoch 20/30] train_loss=1.1144 eval_acc1=74.48 f1=0.4214 auc=0.9175 lr=4.28e-04
+[epoch 21/30] train_loss=1.1184 eval_acc1=73.88 f1=0.4201 auc=0.9124 lr=3.62e-04
+[epoch 22/30] train_loss=1.1105 eval_acc1=74.68 f1=0.4274 auc=0.9187 lr=2.96e-04
+[epoch 23/30] train_loss=1.1061 eval_acc1=74.78 f1=0.4134 auc=0.9246 lr=2.34e-04
+[epoch 24/30] train_loss=1.1088 eval_acc1=74.48 f1=0.4494 auc=0.9244 lr=1.77e-04
+[epoch 25/30] train_loss=1.1017 eval_acc1=75.37 f1=0.4630 auc=0.9263 lr=1.26e-04
+[epoch 26/30] train_loss=1.0970 eval_acc1=75.27 f1=0.4528 auc=0.9272 lr=8.26e-05
+[epoch 27/30] train_loss=1.0825 eval_acc1=75.37 f1=0.4708 auc=0.9267 lr=4.76e-05
+[epoch 28/30] train_loss=1.0838 eval_acc1=74.98 f1=0.4581 auc=0.9268 lr=2.19e-05
+[epoch 29/30] train_loss=1.0846 eval_acc1=74.48 f1=0.4406 auc=0.9268 lr=6.26e-06
+[epoch 30/30] train_loss=1.0881 eval_acc1=74.38 f1=0.4330 auc=0.9267 lr=1.00e-06
+[I 2026-11-22 10:38:08,717] Trial 0 finished with value: 0.43303235238691895 and parameters: {'lr': 0.0008558894657793092, 'class_weighting': 'none', 'label_smoothing': 0.08473095986778095}. Best is trial 0 with value: 0.43303235238691895.
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8240 eval_acc1=64.91 f1=0.1594 auc=0.7991 lr=1.26e-04
+[epoch 2/30] train_loss=1.7300 eval_acc1=67.60 f1=0.1890 auc=0.8251 lr=2.51e-04
+[epoch 3/30] train_loss=1.7022 eval_acc1=62.11 f1=0.2199 auc=0.8203 lr=3.76e-04
+[epoch 4/30] train_loss=1.6805 eval_acc1=65.60 f1=0.2037 auc=0.8623 lr=5.01e-04
+[epoch 5/30] train_loss=1.6458 eval_acc1=69.09 f1=0.2703 auc=0.8727 lr=6.26e-04
+[epoch 6/30] train_loss=1.6373 eval_acc1=68.89 f1=0.3515 auc=0.8888 lr=7.51e-04
+[epoch 7/30] train_loss=1.5991 eval_acc1=67.30 f1=0.3014 auc=0.8844 lr=8.76e-04
+[epoch 8/30] train_loss=1.6070 eval_acc1=67.10 f1=0.3649 auc=0.8923 lr=1.00e-03
+[epoch 9/30] train_loss=1.5985 eval_acc1=68.30 f1=0.3551 auc=0.8940 lr=1.13e-03
+[epoch 10/30] train_loss=1.5769 eval_acc1=70.49 f1=0.3762 auc=0.8942 lr=1.25e-03
+[epoch 11/30] train_loss=1.5825 eval_acc1=72.68 f1=0.3851 auc=0.8964 lr=1.24e-03
+[epoch 12/30] train_loss=1.5676 eval_acc1=71.59 f1=0.4264 auc=0.9036 lr=1.22e-03
+[epoch 13/30] train_loss=1.5528 eval_acc1=70.39 f1=0.3353 auc=0.8911 lr=1.18e-03
+[epoch 14/30] train_loss=1.5476 eval_acc1=71.39 f1=0.4119 auc=0.8983 lr=1.13e-03
+[epoch 15/30] train_loss=1.5321 eval_acc1=71.09 f1=0.4501 auc=0.9083 lr=1.07e-03
+[epoch 16/30] train_loss=1.5424 eval_acc1=72.38 f1=0.4551 auc=0.9078 lr=9.94e-04
+[epoch 17/30] train_loss=1.5267 eval_acc1=75.57 f1=0.4830 auc=0.9209 lr=9.10e-04
+[epoch 18/30] train_loss=1.5092 eval_acc1=72.38 f1=0.4679 auc=0.9062 lr=8.19e-04
+[epoch 19/30] train_loss=1.4981 eval_acc1=75.17 f1=0.4419 auc=0.9157 lr=7.24e-04
+[epoch 20/30] train_loss=1.4882 eval_acc1=73.58 f1=0.4609 auc=0.9145 lr=6.26e-04
+[epoch 21/30] train_loss=1.4818 eval_acc1=71.78 f1=0.4128 auc=0.9065 lr=5.28e-04
+[epoch 22/30] train_loss=1.4760 eval_acc1=71.19 f1=0.4764 auc=0.9105 lr=4.33e-04
+[epoch 23/30] train_loss=1.4627 eval_acc1=74.68 f1=0.5060 auc=0.9200 lr=3.42e-04
+[epoch 24/30] train_loss=1.4718 eval_acc1=72.58 f1=0.4615 auc=0.9232 lr=2.59e-04
+[epoch 25/30] train_loss=1.4551 eval_acc1=72.28 f1=0.4825 auc=0.9218 lr=1.84e-04
+[epoch 26/30] train_loss=1.4482 eval_acc1=71.59 f1=0.4958 auc=0.9257 lr=1.20e-04
+[epoch 27/30] train_loss=1.4194 eval_acc1=73.18 f1=0.4721 auc=0.9232 lr=6.91e-05
+[epoch 28/30] train_loss=1.4158 eval_acc1=73.58 f1=0.5119 auc=0.9236 lr=3.16e-05
+[epoch 29/30] train_loss=1.4196 eval_acc1=73.88 f1=0.4996 auc=0.9244 lr=8.70e-06
+[epoch 30/30] train_loss=1.4260 eval_acc1=73.38 f1=0.4829 auc=0.9239 lr=1.00e-06
+[I 2026-11-22 10:42:07,194] Trial 1 finished with value: 0.48288383874822394 and parameters: {'lr': 0.001251280636913535, 'class_weighting': 'sqrt_inverse_freq', 'label_smoothing': 0.07668830376515555}. Best is trial 1 with value: 0.48288383874822394.
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.7881 eval_acc1=66.50 f1=0.1354 auc=0.8132 lr=2.22e-04
+[epoch 2/30] train_loss=1.6967 eval_acc1=67.30 f1=0.1593 auc=0.8329 lr=4.44e-04
+[epoch 3/30] train_loss=1.6572 eval_acc1=64.21 f1=0.2208 auc=0.8446 lr=6.65e-04
+[epoch 4/30] train_loss=1.6259 eval_acc1=67.40 f1=0.2429 auc=0.8681 lr=8.86e-04
+[epoch 5/30] train_loss=1.5925 eval_acc1=69.39 f1=0.3198 auc=0.8704 lr=1.11e-03
+[epoch 6/30] train_loss=1.5865 eval_acc1=68.59 f1=0.3814 auc=0.8973 lr=1.33e-03
+[epoch 7/30] train_loss=1.5473 eval_acc1=67.00 f1=0.2980 auc=0.8881 lr=1.55e-03
+[epoch 8/30] train_loss=1.5626 eval_acc1=70.19 f1=0.4008 auc=0.8921 lr=1.77e-03
+[epoch 9/30] train_loss=1.5521 eval_acc1=69.69 f1=0.3286 auc=0.8967 lr=1.99e-03
+[epoch 10/30] train_loss=1.5362 eval_acc1=67.50 f1=0.2920 auc=0.8849 lr=2.21e-03
+[epoch 11/30] train_loss=1.5414 eval_acc1=71.78 f1=0.4028 auc=0.8972 lr=2.20e-03
+[epoch 12/30] train_loss=1.5191 eval_acc1=69.49 f1=0.3841 auc=0.8981 lr=2.16e-03
+[epoch 13/30] train_loss=1.4995 eval_acc1=67.30 f1=0.3095 auc=0.8911 lr=2.09e-03
+[epoch 14/30] train_loss=1.4967 eval_acc1=71.78 f1=0.4027 auc=0.8938 lr=2.00e-03
+[epoch 15/30] train_loss=1.4762 eval_acc1=71.88 f1=0.4388 auc=0.9061 lr=1.89e-03
+[epoch 16/30] train_loss=1.4921 eval_acc1=71.78 f1=0.4157 auc=0.9027 lr=1.76e-03
+[epoch 17/30] train_loss=1.4700 eval_acc1=74.28 f1=0.4654 auc=0.9190 lr=1.61e-03
+[epoch 18/30] train_loss=1.4561 eval_acc1=66.80 f1=0.4149 auc=0.8920 lr=1.45e-03
+[epoch 19/30] train_loss=1.4422 eval_acc1=71.98 f1=0.3794 auc=0.9091 lr=1.28e-03
+[epoch 20/30] train_loss=1.4245 eval_acc1=70.89 f1=0.4134 auc=0.9079 lr=1.11e-03
+[epoch 21/30] train_loss=1.4197 eval_acc1=69.99 f1=0.4238 auc=0.8948 lr=9.34e-04
+[epoch 22/30] train_loss=1.4090 eval_acc1=69.89 f1=0.4643 auc=0.9072 lr=7.65e-04
+[epoch 23/30] train_loss=1.3944 eval_acc1=71.68 f1=0.4639 auc=0.9143 lr=6.05e-04
+[epoch 24/30] train_loss=1.4067 eval_acc1=71.98 f1=0.4507 auc=0.9181 lr=4.57e-04
+[epoch 25/30] train_loss=1.3898 eval_acc1=71.68 f1=0.4598 auc=0.9172 lr=3.25e-04
+[epoch 26/30] train_loss=1.3764 eval_acc1=70.89 f1=0.4736 auc=0.9190 lr=2.12e-04
+[epoch 27/30] train_loss=1.3433 eval_acc1=72.08 f1=0.4742 auc=0.9174 lr=1.22e-04
+[epoch 28/30] train_loss=1.3413 eval_acc1=73.28 f1=0.5006 auc=0.9179 lr=5.51e-05
+[epoch 29/30] train_loss=1.3434 eval_acc1=73.38 f1=0.5002 auc=0.9195 lr=1.46e-05
+[epoch 30/30] train_loss=1.3488 eval_acc1=72.98 f1=0.4950 auc=0.9192 lr=1.00e-06
+[I 2026-11-22 10:46:03,708] Trial 2 finished with value: 0.494993968495301 and parameters: {'lr': 0.002213691468878238, 'class_weighting': 'sqrt_inverse_freq', 'label_smoothing': 0.014207211639577388}. Best is trial 2 with value: 0.494993968495301.
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=2.1191 eval_acc1=22.33 f1=0.1343 auc=0.6914 lr=1.50e-05
+[epoch 2/30] train_loss=1.9683 eval_acc1=38.88 f1=0.1909 auc=0.7461 lr=2.89e-05
+[epoch 3/30] train_loss=1.9505 eval_acc1=40.88 f1=0.2330 auc=0.7680 lr=4.29e-05
+[epoch 4/30] train_loss=1.9457 eval_acc1=29.81 f1=0.1870 auc=0.7408 lr=5.68e-05
+[epoch 5/30] train_loss=1.9316 eval_acc1=37.69 f1=0.1929 auc=0.8058 lr=7.08e-05
+[epoch 6/30] train_loss=1.9234 eval_acc1=31.11 f1=0.1592 auc=0.7891 lr=8.48e-05
+[epoch 7/30] train_loss=1.9066 eval_acc1=39.08 f1=0.2323 auc=0.7822 lr=9.87e-05
+[epoch 8/30] train_loss=1.9170 eval_acc1=49.15 f1=0.2689 auc=0.8246 lr=1.13e-04
+[epoch 9/30] train_loss=1.9052 eval_acc1=50.85 f1=0.3058 auc=0.8320 lr=1.27e-04
+[epoch 10/30] train_loss=1.8940 eval_acc1=50.15 f1=0.3116 auc=0.8098 lr=1.41e-04
+[epoch 11/30] train_loss=1.8832 eval_acc1=50.75 f1=0.3276 auc=0.8296 lr=1.40e-04
+[epoch 12/30] train_loss=1.8574 eval_acc1=51.74 f1=0.2419 auc=0.8440 lr=1.37e-04
+[epoch 13/30] train_loss=1.8348 eval_acc1=54.54 f1=0.3206 auc=0.8442 lr=1.33e-04
+[epoch 14/30] train_loss=1.8325 eval_acc1=55.93 f1=0.3518 auc=0.8637 lr=1.27e-04
+[epoch 15/30] train_loss=1.8111 eval_acc1=45.86 f1=0.2972 auc=0.8481 lr=1.20e-04
+[epoch 16/30] train_loss=1.8135 eval_acc1=52.14 f1=0.2965 auc=0.8368 lr=1.12e-04
+[epoch 17/30] train_loss=1.8118 eval_acc1=51.65 f1=0.3315 auc=0.8745 lr=1.02e-04
+[epoch 18/30] train_loss=1.7996 eval_acc1=52.64 f1=0.3528 auc=0.8556 lr=9.24e-05
+[epoch 19/30] train_loss=1.7800 eval_acc1=51.45 f1=0.3548 auc=0.8580 lr=8.17e-05
+[epoch 20/30] train_loss=1.7728 eval_acc1=55.33 f1=0.3556 auc=0.8616 lr=7.08e-05
+[epoch 21/30] train_loss=1.7690 eval_acc1=57.93 f1=0.3602 auc=0.8791 lr=5.99e-05
+[epoch 22/30] train_loss=1.7605 eval_acc1=49.25 f1=0.3455 auc=0.8609 lr=4.92e-05
+[epoch 23/30] train_loss=1.7559 eval_acc1=58.62 f1=0.3750 auc=0.8823 lr=3.91e-05
+[epoch 24/30] train_loss=1.7634 eval_acc1=55.33 f1=0.3789 auc=0.8849 lr=2.98e-05
+[epoch 25/30] train_loss=1.7498 eval_acc1=59.12 f1=0.3927 auc=0.8757 lr=2.14e-05
+[epoch 26/30] train_loss=1.7434 eval_acc1=56.43 f1=0.3950 auc=0.8805 lr=1.43e-05
+[epoch 27/30] train_loss=1.7307 eval_acc1=56.93 f1=0.3918 auc=0.8798 lr=8.61e-06
+[epoch 28/30] train_loss=1.7253 eval_acc1=57.13 f1=0.3962 auc=0.8868 lr=4.42e-06
+[epoch 29/30] train_loss=1.7353 eval_acc1=58.23 f1=0.3902 auc=0.8844 lr=1.86e-06
+[epoch 30/30] train_loss=1.7332 eval_acc1=57.83 f1=0.3905 auc=0.8830 lr=1.00e-06
+[I 2026-11-22 10:50:00,546] Trial 3 finished with value: 0.39053232756967066 and parameters: {'lr': 0.0001406144869739008, 'class_weighting': 'inverse_freq', 'label_smoothing': 0.17400242964936385}. Best is trial 2 with value: 0.494993968495301.
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.2642 eval_acc1=66.90 f1=0.1145 auc=0.8281 lr=4.61e-04
+[epoch 2/30] train_loss=1.1470 eval_acc1=67.10 f1=0.1245 auc=0.8426 lr=9.21e-04
+[epoch 3/30] train_loss=1.1251 eval_acc1=68.20 f1=0.1673 auc=0.8580 lr=1.38e-03
+[epoch 4/30] train_loss=1.1072 eval_acc1=67.10 f1=0.1449 auc=0.8788 lr=1.84e-03
+[epoch 5/30] train_loss=1.0929 eval_acc1=68.30 f1=0.2137 auc=0.8729 lr=2.30e-03
+[epoch 6/30] train_loss=1.0918 eval_acc1=69.59 f1=0.2883 auc=0.8955 lr=2.76e-03
+[epoch 7/30] train_loss=1.0652 eval_acc1=67.90 f1=0.1839 auc=0.8958 lr=3.22e-03
+[epoch 8/30] train_loss=1.0748 eval_acc1=68.30 f1=0.1748 auc=0.8737 lr=3.68e-03
+[epoch 9/30] train_loss=1.0648 eval_acc1=69.99 f1=0.2228 auc=0.8899 lr=4.14e-03
+[epoch 10/30] train_loss=1.0579 eval_acc1=70.29 f1=0.2049 auc=0.8916 lr=4.60e-03
+[epoch 11/30] train_loss=1.0576 eval_acc1=67.90 f1=0.1623 auc=0.8994 lr=4.57e-03
+[epoch 12/30] train_loss=1.0527 eval_acc1=70.99 f1=0.2884 auc=0.9013 lr=4.49e-03
+[epoch 13/30] train_loss=1.0418 eval_acc1=69.19 f1=0.2567 auc=0.9046 lr=4.35e-03
+[epoch 14/30] train_loss=1.0366 eval_acc1=71.98 f1=0.3603 auc=0.9023 lr=4.16e-03
+[epoch 15/30] train_loss=1.0258 eval_acc1=71.68 f1=0.3303 auc=0.9131 lr=3.93e-03
+[epoch 16/30] train_loss=1.0374 eval_acc1=71.39 f1=0.3173 auc=0.9114 lr=3.65e-03
+[epoch 17/30] train_loss=1.0201 eval_acc1=70.59 f1=0.3295 auc=0.9154 lr=3.34e-03
+[epoch 18/30] train_loss=1.0133 eval_acc1=72.38 f1=0.3621 auc=0.9088 lr=3.01e-03
+[epoch 19/30] train_loss=1.0034 eval_acc1=71.39 f1=0.3276 auc=0.9145 lr=2.66e-03
+[epoch 20/30] train_loss=0.9945 eval_acc1=72.48 f1=0.3571 auc=0.9170 lr=2.30e-03
+[epoch 21/30] train_loss=0.9966 eval_acc1=72.68 f1=0.3535 auc=0.9152 lr=1.94e-03
+[epoch 22/30] train_loss=0.9868 eval_acc1=73.38 f1=0.4144 auc=0.9151 lr=1.59e-03
+[epoch 23/30] train_loss=0.9825 eval_acc1=73.98 f1=0.4081 auc=0.9262 lr=1.26e-03
+[epoch 24/30] train_loss=0.9829 eval_acc1=73.98 f1=0.4191 auc=0.9250 lr=9.49e-04
+[epoch 25/30] train_loss=0.9725 eval_acc1=74.68 f1=0.4316 auc=0.9271 lr=6.74e-04
+[epoch 26/30] train_loss=0.9662 eval_acc1=75.47 f1=0.4614 auc=0.9292 lr=4.40e-04
+[epoch 27/30] train_loss=0.9461 eval_acc1=75.07 f1=0.4461 auc=0.9267 lr=2.52e-04
+[epoch 28/30] train_loss=0.9443 eval_acc1=75.87 f1=0.4782 auc=0.9294 lr=1.14e-04
+[epoch 29/30] train_loss=0.9471 eval_acc1=75.47 f1=0.4662 auc=0.9291 lr=2.93e-05
+[epoch 30/30] train_loss=0.9506 eval_acc1=75.67 f1=0.4656 auc=0.9286 lr=1.00e-06
+[I 2026-11-22 10:53:53,137] Trial 4 finished with value: 0.46559401370123826 and parameters: {'lr': 0.004598786090752842, 'class_weighting': 'none', 'label_smoothing': 0.023654885173786645}. Best is trial 2 with value: 0.494993968495301.
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=2.0484 eval_acc1=34.00 f1=0.1330 auc=0.7505 lr=1.23e-04
+[epoch 2/30] train_loss=1.9758 eval_acc1=38.48 f1=0.1793 auc=0.7627 lr=2.45e-04
+[epoch 3/30] train_loss=1.9318 eval_acc1=42.77 f1=0.1999 auc=0.7735 lr=3.67e-04
+[epoch 4/30] train_loss=1.9304 eval_acc1=47.16 f1=0.1978 auc=0.8021 lr=4.90e-04
+[epoch 5/30] train_loss=1.8820 eval_acc1=47.36 f1=0.2651 auc=0.8581 lr=6.12e-04
+[epoch 6/30] train_loss=1.8622 eval_acc1=32.50 f1=0.1862 auc=0.8450 lr=7.34e-04
+[epoch 7/30] train_loss=1.8223 eval_acc1=39.98 f1=0.2792 auc=0.8493 lr=8.56e-04
+[epoch 8/30] train_loss=1.8391 eval_acc1=52.44 f1=0.3320 auc=0.8656 lr=9.78e-04
+[epoch 9/30] train_loss=1.8270 eval_acc1=54.64 f1=0.3558 auc=0.8730 lr=1.10e-03
+[epoch 10/30] train_loss=1.8081 eval_acc1=44.97 f1=0.2822 auc=0.8450 lr=1.22e-03
+[epoch 11/30] train_loss=1.8087 eval_acc1=50.25 f1=0.3184 auc=0.8724 lr=1.21e-03
+[epoch 12/30] train_loss=1.7930 eval_acc1=62.51 f1=0.3231 auc=0.8810 lr=1.19e-03
+[I 2026-11-22 10:55:27,866] Trial 5 pruned. MedianPruner na época 12
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.3430 eval_acc1=66.90 f1=0.1145 auc=0.7467 lr=2.90e-05
+[epoch 2/30] train_loss=1.1195 eval_acc1=66.90 f1=0.1145 auc=0.8173 lr=5.71e-05
+[epoch 3/30] train_loss=1.1054 eval_acc1=66.70 f1=0.1144 auc=0.8155 lr=8.51e-05
+[epoch 4/30] train_loss=1.0880 eval_acc1=66.80 f1=0.1146 auc=0.8351 lr=1.13e-04
+[epoch 5/30] train_loss=1.0765 eval_acc1=66.90 f1=0.1334 auc=0.8552 lr=1.41e-04
+[epoch 6/30] train_loss=1.0723 eval_acc1=67.90 f1=0.1959 auc=0.8472 lr=1.69e-04
+[epoch 7/30] train_loss=1.0457 eval_acc1=68.89 f1=0.1901 auc=0.8817 lr=1.97e-04
+[epoch 8/30] train_loss=1.0517 eval_acc1=68.89 f1=0.1995 auc=0.8806 lr=2.25e-04
+[epoch 9/30] train_loss=1.0397 eval_acc1=70.19 f1=0.2173 auc=0.8906 lr=2.53e-04
+[epoch 10/30] train_loss=1.0275 eval_acc1=70.99 f1=0.2908 auc=0.8929 lr=2.81e-04
+[epoch 11/30] train_loss=1.0283 eval_acc1=69.09 f1=0.1960 auc=0.8951 lr=2.80e-04
+[I 2026-11-22 10:56:54,020] Trial 6 pruned. MedianPruner na época 11
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8515 eval_acc1=64.41 f1=0.1594 auc=0.7969 lr=1.13e-04
+[epoch 2/30] train_loss=1.7591 eval_acc1=67.30 f1=0.1847 auc=0.8253 lr=2.25e-04
+[epoch 3/30] train_loss=1.7351 eval_acc1=60.62 f1=0.2028 auc=0.8102 lr=3.37e-04
+[epoch 4/30] train_loss=1.7184 eval_acc1=65.40 f1=0.2011 auc=0.8588 lr=4.49e-04
+[epoch 5/30] train_loss=1.6880 eval_acc1=68.89 f1=0.2587 auc=0.8742 lr=5.61e-04
+[epoch 6/30] train_loss=1.6803 eval_acc1=69.39 f1=0.3624 auc=0.8853 lr=6.73e-04
+[epoch 7/30] train_loss=1.6457 eval_acc1=68.10 f1=0.2938 auc=0.8831 lr=7.85e-04
+[epoch 8/30] train_loss=1.6508 eval_acc1=66.80 f1=0.3424 auc=0.8892 lr=8.96e-04
+[epoch 9/30] train_loss=1.6428 eval_acc1=69.39 f1=0.3437 auc=0.8957 lr=1.01e-03
+[epoch 10/30] train_loss=1.6216 eval_acc1=71.39 f1=0.4023 auc=0.8986 lr=1.12e-03
+[epoch 11/30] train_loss=1.6266 eval_acc1=72.78 f1=0.3891 auc=0.8990 lr=1.11e-03
+[epoch 12/30] train_loss=1.6152 eval_acc1=71.39 f1=0.4043 auc=0.9034 lr=1.09e-03
+[epoch 13/30] train_loss=1.5987 eval_acc1=69.29 f1=0.3175 auc=0.8900 lr=1.06e-03
+[epoch 14/30] train_loss=1.5953 eval_acc1=72.38 f1=0.4052 auc=0.9012 lr=1.01e-03
+[epoch 15/30] train_loss=1.5870 eval_acc1=70.49 f1=0.4388 auc=0.9070 lr=9.56e-04
+[epoch 16/30] train_loss=1.5946 eval_acc1=70.49 f1=0.4369 auc=0.9092 lr=8.90e-04
+[epoch 17/30] train_loss=1.5799 eval_acc1=73.58 f1=0.4554 auc=0.9191 lr=8.15e-04
+[epoch 18/30] train_loss=1.5650 eval_acc1=71.68 f1=0.4406 auc=0.9070 lr=7.34e-04
+[epoch 19/30] train_loss=1.5538 eval_acc1=73.78 f1=0.4248 auc=0.9137 lr=6.48e-04
+[epoch 20/30] train_loss=1.5464 eval_acc1=71.59 f1=0.4527 auc=0.9102 lr=5.61e-04
+[epoch 21/30] train_loss=1.5410 eval_acc1=72.38 f1=0.4152 auc=0.9062 lr=4.73e-04
+[epoch 22/30] train_loss=1.5347 eval_acc1=70.19 f1=0.4512 auc=0.9147 lr=3.88e-04
+[epoch 23/30] train_loss=1.5257 eval_acc1=73.78 f1=0.4697 auc=0.9227 lr=3.07e-04
+[epoch 24/30] train_loss=1.5317 eval_acc1=72.78 f1=0.4555 auc=0.9247 lr=2.32e-04
+[epoch 25/30] train_loss=1.5187 eval_acc1=73.08 f1=0.4687 auc=0.9235 lr=1.65e-04
+[epoch 26/30] train_loss=1.5112 eval_acc1=72.18 f1=0.4819 auc=0.9254 lr=1.08e-04
+[epoch 27/30] train_loss=1.4883 eval_acc1=73.08 f1=0.4706 auc=0.9239 lr=6.20e-05
+[epoch 28/30] train_loss=1.4859 eval_acc1=73.08 f1=0.4712 auc=0.9246 lr=2.84e-05
+[epoch 29/30] train_loss=1.4878 eval_acc1=73.98 f1=0.4887 auc=0.9255 lr=7.89e-06
+[epoch 30/30] train_loss=1.4941 eval_acc1=73.88 f1=0.4962 auc=0.9251 lr=1.00e-06
+[I 2026-11-22 11:00:51,756] Trial 7 finished with value: 0.4962229234929593 and parameters: {'lr': 0.001120325401917855, 'class_weighting': 'sqrt_inverse_freq', 'label_smoothing': 0.1363640598206967}. Best is trial 7 with value: 0.4962229234929593.
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=2.0775 eval_acc1=29.31 f1=0.1594 auc=0.7348 lr=4.17e-05
+[epoch 2/30] train_loss=1.9678 eval_acc1=32.20 f1=0.1831 auc=0.7516 lr=8.24e-05
+[epoch 3/30] train_loss=1.9424 eval_acc1=45.66 f1=0.2434 auc=0.7714 lr=1.23e-04
+[epoch 4/30] train_loss=1.9451 eval_acc1=34.90 f1=0.1780 auc=0.7549 lr=1.64e-04
+[epoch 5/30] train_loss=1.9187 eval_acc1=40.58 f1=0.1784 auc=0.8216 lr=2.05e-04
+[epoch 6/30] train_loss=1.9060 eval_acc1=33.60 f1=0.1790 auc=0.8136 lr=2.45e-04
+[epoch 7/30] train_loss=1.8720 eval_acc1=40.78 f1=0.2506 auc=0.8036 lr=2.86e-04
+[epoch 8/30] train_loss=1.8774 eval_acc1=53.54 f1=0.3371 auc=0.8660 lr=3.27e-04
+[epoch 9/30] train_loss=1.8540 eval_acc1=54.34 f1=0.3728 auc=0.8785 lr=3.67e-04
+[epoch 10/30] train_loss=1.8317 eval_acc1=50.65 f1=0.3335 auc=0.8585 lr=4.08e-04
+[epoch 11/30] train_loss=1.8270 eval_acc1=53.74 f1=0.4005 auc=0.8741 lr=4.06e-04
+[epoch 12/30] train_loss=1.8076 eval_acc1=58.92 f1=0.2831 auc=0.8730 lr=3.98e-04
+[epoch 13/30] train_loss=1.7898 eval_acc1=51.55 f1=0.2947 auc=0.8512 lr=3.86e-04
+[epoch 14/30] train_loss=1.7854 eval_acc1=54.14 f1=0.3830 auc=0.8863 lr=3.69e-04
+[epoch 15/30] train_loss=1.7672 eval_acc1=48.35 f1=0.3079 auc=0.8822 lr=3.49e-04
+[epoch 16/30] train_loss=1.7663 eval_acc1=55.43 f1=0.3356 auc=0.8678 lr=3.24e-04
+[epoch 17/30] train_loss=1.7623 eval_acc1=53.84 f1=0.3718 auc=0.8950 lr=2.97e-04
+[epoch 18/30] train_loss=1.7456 eval_acc1=53.44 f1=0.3651 auc=0.8790 lr=2.67e-04
+[epoch 19/30] train_loss=1.7275 eval_acc1=55.13 f1=0.3918 auc=0.8808 lr=2.36e-04
+[epoch 20/30] train_loss=1.7169 eval_acc1=56.43 f1=0.3581 auc=0.8863 lr=2.05e-04
+[I 2026-11-22 11:03:29,930] Trial 8 pruned. MedianPruner na época 20
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8200 eval_acc1=65.70 f1=0.1600 auc=0.8020 lr=1.39e-04
+[epoch 2/30] train_loss=1.7282 eval_acc1=67.70 f1=0.1891 auc=0.8255 lr=2.76e-04
+[epoch 3/30] train_loss=1.6987 eval_acc1=63.11 f1=0.2287 auc=0.8233 lr=4.14e-04
+[epoch 4/30] train_loss=1.6758 eval_acc1=66.00 f1=0.2045 auc=0.8640 lr=5.52e-04
+[epoch 5/30] train_loss=1.6418 eval_acc1=68.59 f1=0.2953 auc=0.8733 lr=6.90e-04
+[epoch 6/30] train_loss=1.6328 eval_acc1=68.89 f1=0.3505 auc=0.8913 lr=8.27e-04
+[epoch 7/30] train_loss=1.5953 eval_acc1=65.90 f1=0.2594 auc=0.8891 lr=9.65e-04
+[epoch 8/30] train_loss=1.6047 eval_acc1=68.20 f1=0.3596 auc=0.8910 lr=1.10e-03
+[epoch 9/30] train_loss=1.5954 eval_acc1=69.29 f1=0.3821 auc=0.8978 lr=1.24e-03
+[epoch 10/30] train_loss=1.5751 eval_acc1=71.19 f1=0.3639 auc=0.9021 lr=1.38e-03
+[epoch 11/30] train_loss=1.5826 eval_acc1=72.78 f1=0.3987 auc=0.8973 lr=1.37e-03
+[epoch 12/30] train_loss=1.5654 eval_acc1=70.99 f1=0.4109 auc=0.9004 lr=1.34e-03
+[epoch 13/30] train_loss=1.5487 eval_acc1=69.89 f1=0.3364 auc=0.8934 lr=1.30e-03
+[epoch 14/30] train_loss=1.5438 eval_acc1=71.19 f1=0.3823 auc=0.9013 lr=1.25e-03
+[epoch 15/30] train_loss=1.5281 eval_acc1=70.59 f1=0.4113 auc=0.9020 lr=1.18e-03
+[epoch 16/30] train_loss=1.5399 eval_acc1=71.09 f1=0.4369 auc=0.9063 lr=1.09e-03
+[epoch 17/30] train_loss=1.5204 eval_acc1=73.68 f1=0.4620 auc=0.9246 lr=1.00e-03
+[epoch 18/30] train_loss=1.5064 eval_acc1=69.99 f1=0.4263 auc=0.9059 lr=9.03e-04
+[epoch 19/30] train_loss=1.4926 eval_acc1=73.68 f1=0.4018 auc=0.9166 lr=7.97e-04
+[epoch 20/30] train_loss=1.4830 eval_acc1=73.08 f1=0.4677 auc=0.9163 lr=6.90e-04
+[epoch 21/30] train_loss=1.4793 eval_acc1=71.98 f1=0.4170 auc=0.9066 lr=5.82e-04
+[epoch 22/30] train_loss=1.4688 eval_acc1=70.09 f1=0.4673 auc=0.9111 lr=4.77e-04
+[epoch 23/30] train_loss=1.4567 eval_acc1=73.58 f1=0.4672 auc=0.9204 lr=3.77e-04
+[epoch 24/30] train_loss=1.4671 eval_acc1=73.38 f1=0.4620 auc=0.9228 lr=2.85e-04
+[epoch 25/30] train_loss=1.4505 eval_acc1=73.48 f1=0.4651 auc=0.9224 lr=2.03e-04
+[epoch 26/30] train_loss=1.4395 eval_acc1=73.38 f1=0.4944 auc=0.9273 lr=1.33e-04
+[epoch 27/30] train_loss=1.4159 eval_acc1=72.68 f1=0.4780 auc=0.9228 lr=7.61e-05
+[epoch 28/30] train_loss=1.4097 eval_acc1=72.88 f1=0.4832 auc=0.9240 lr=3.47e-05
+[epoch 29/30] train_loss=1.4112 eval_acc1=73.98 f1=0.4904 auc=0.9256 lr=9.48e-06
+[epoch 30/30] train_loss=1.4185 eval_acc1=73.58 f1=0.4803 auc=0.9252 lr=1.00e-06
+[I 2026-11-22 11:07:29,201] Trial 9 finished with value: 0.4803021808067829 and parameters: {'lr': 0.0013784582731357577, 'class_weighting': 'sqrt_inverse_freq', 'label_smoothing': 0.07274215418852452}. Best is trial 7 with value: 0.4962229234929593.
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.9253 eval_acc1=62.21 f1=0.1776 auc=0.7378 lr=1.27e-05
+[epoch 2/30] train_loss=1.7478 eval_acc1=60.82 f1=0.2048 auc=0.7886 lr=2.44e-05
+[epoch 3/30] train_loss=1.7259 eval_acc1=62.51 f1=0.2376 auc=0.8008 lr=3.61e-05
+[epoch 4/30] train_loss=1.7128 eval_acc1=59.72 f1=0.2474 auc=0.8084 lr=4.78e-05
+[epoch 5/30] train_loss=1.7008 eval_acc1=67.10 f1=0.2345 auc=0.8321 lr=5.95e-05
+[epoch 6/30] train_loss=1.6903 eval_acc1=66.00 f1=0.2787 auc=0.8352 lr=7.12e-05
+[epoch 7/30] train_loss=1.6719 eval_acc1=64.41 f1=0.2723 auc=0.8396 lr=8.29e-05
+[epoch 8/30] train_loss=1.6741 eval_acc1=66.60 f1=0.2665 auc=0.8612 lr=9.46e-05
+[epoch 9/30] train_loss=1.6654 eval_acc1=64.81 f1=0.3102 auc=0.8701 lr=1.06e-04
+[epoch 10/30] train_loss=1.6461 eval_acc1=64.21 f1=0.3157 auc=0.8422 lr=1.18e-04
+[epoch 11/30] train_loss=1.6479 eval_acc1=69.29 f1=0.2978 auc=0.8773 lr=1.17e-04
+[I 2026-11-22 11:08:57,163] Trial 10 pruned. MedianPruner na época 11
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8648 eval_acc1=65.60 f1=0.1617 auc=0.8097 lr=1.70e-04
+[epoch 2/30] train_loss=1.7849 eval_acc1=67.30 f1=0.1911 auc=0.8256 lr=3.39e-04
+[epoch 3/30] train_loss=1.7605 eval_acc1=59.72 f1=0.1961 auc=0.8054 lr=5.08e-04
+[epoch 4/30] train_loss=1.7409 eval_acc1=67.10 f1=0.2043 auc=0.8674 lr=6.77e-04
+[epoch 5/30] train_loss=1.7166 eval_acc1=68.89 f1=0.2836 auc=0.8730 lr=8.45e-04
+[epoch 6/30] train_loss=1.7111 eval_acc1=69.79 f1=0.3480 auc=0.8930 lr=1.01e-03
+[epoch 7/30] train_loss=1.6839 eval_acc1=68.30 f1=0.3054 auc=0.8802 lr=1.18e-03
+[epoch 8/30] train_loss=1.6913 eval_acc1=69.39 f1=0.3407 auc=0.8900 lr=1.35e-03
+[epoch 9/30] train_loss=1.6836 eval_acc1=67.30 f1=0.3576 auc=0.8929 lr=1.52e-03
+[epoch 10/30] train_loss=1.6700 eval_acc1=71.19 f1=0.3698 auc=0.9006 lr=1.69e-03
+[epoch 11/30] train_loss=1.6747 eval_acc1=72.28 f1=0.3447 auc=0.9014 lr=1.68e-03
+[I 2026-11-22 11:10:23,983] Trial 11 pruned. MedianPruner na época 11
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8319 eval_acc1=67.00 f1=0.1616 auc=0.8154 lr=4.30e-04
+[epoch 2/30] train_loss=1.7519 eval_acc1=68.20 f1=0.1728 auc=0.8383 lr=8.59e-04
+[epoch 3/30] train_loss=1.7192 eval_acc1=62.61 f1=0.2046 auc=0.8328 lr=1.29e-03
+[epoch 4/30] train_loss=1.6943 eval_acc1=67.70 f1=0.2433 auc=0.8762 lr=1.72e-03
+[epoch 5/30] train_loss=1.6745 eval_acc1=68.49 f1=0.3163 auc=0.8634 lr=2.15e-03
+[epoch 6/30] train_loss=1.6731 eval_acc1=69.49 f1=0.3601 auc=0.8891 lr=2.58e-03
+[epoch 7/30] train_loss=1.6467 eval_acc1=68.59 f1=0.2413 auc=0.8903 lr=3.01e-03
+[epoch 8/30] train_loss=1.6593 eval_acc1=66.10 f1=0.3330 auc=0.8820 lr=3.43e-03
+[epoch 9/30] train_loss=1.6475 eval_acc1=68.00 f1=0.3020 auc=0.8813 lr=3.86e-03
+[epoch 10/30] train_loss=1.6353 eval_acc1=70.69 f1=0.3236 auc=0.8922 lr=4.29e-03
+[epoch 11/30] train_loss=1.6373 eval_acc1=71.19 f1=0.3572 auc=0.8977 lr=4.27e-03
+[I 2026-11-22 11:11:49,846] Trial 12 pruned. MedianPruner na época 11
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8077 eval_acc1=60.32 f1=0.1508 auc=0.7804 lr=7.40e-05
+[epoch 2/30] train_loss=1.6904 eval_acc1=66.10 f1=0.1705 auc=0.8244 lr=1.47e-04
+[epoch 3/30] train_loss=1.6663 eval_acc1=61.52 f1=0.2344 auc=0.8187 lr=2.20e-04
+[epoch 4/30] train_loss=1.6451 eval_acc1=63.61 f1=0.2024 auc=0.8409 lr=2.93e-04
+[epoch 5/30] train_loss=1.6100 eval_acc1=66.40 f1=0.2541 auc=0.8650 lr=3.66e-04
+[epoch 6/30] train_loss=1.5953 eval_acc1=67.30 f1=0.3405 auc=0.8728 lr=4.39e-04
+[epoch 7/30] train_loss=1.5466 eval_acc1=66.20 f1=0.3032 auc=0.8787 lr=5.12e-04
+[epoch 8/30] train_loss=1.5570 eval_acc1=66.80 f1=0.3773 auc=0.8936 lr=5.85e-04
+[epoch 9/30] train_loss=1.5412 eval_acc1=69.19 f1=0.3448 auc=0.8981 lr=6.58e-04
+[epoch 10/30] train_loss=1.5167 eval_acc1=69.39 f1=0.3489 auc=0.8885 lr=7.31e-04
+[epoch 11/30] train_loss=1.5211 eval_acc1=73.38 f1=0.3870 auc=0.9005 lr=7.27e-04
+[epoch 12/30] train_loss=1.5018 eval_acc1=72.48 f1=0.4092 auc=0.9050 lr=7.13e-04
+[epoch 13/30] train_loss=1.4803 eval_acc1=68.10 f1=0.3272 auc=0.8809 lr=6.91e-04
+[epoch 14/30] train_loss=1.4773 eval_acc1=72.58 f1=0.4128 auc=0.9018 lr=6.62e-04
+[epoch 15/30] train_loss=1.4586 eval_acc1=69.19 f1=0.4294 auc=0.9087 lr=6.24e-04
+[epoch 16/30] train_loss=1.4694 eval_acc1=70.49 f1=0.4357 auc=0.9036 lr=5.81e-04
+[epoch 17/30] train_loss=1.4499 eval_acc1=74.18 f1=0.4647 auc=0.9205 lr=5.32e-04
+[epoch 18/30] train_loss=1.4328 eval_acc1=71.19 f1=0.4446 auc=0.9065 lr=4.79e-04
+[epoch 19/30] train_loss=1.4193 eval_acc1=74.68 f1=0.4184 auc=0.9161 lr=4.23e-04
+[epoch 20/30] train_loss=1.4056 eval_acc1=70.99 f1=0.4514 auc=0.9147 lr=3.66e-04
+[epoch 21/30] train_loss=1.4004 eval_acc1=71.78 f1=0.4110 auc=0.9051 lr=3.09e-04
+[epoch 22/30] train_loss=1.3906 eval_acc1=69.59 f1=0.4422 auc=0.9107 lr=2.53e-04
+[epoch 23/30] train_loss=1.3793 eval_acc1=73.78 f1=0.4835 auc=0.9228 lr=2.00e-04
+[epoch 24/30] train_loss=1.3911 eval_acc1=73.08 f1=0.4620 auc=0.9250 lr=1.52e-04
+[epoch 25/30] train_loss=1.3707 eval_acc1=72.78 f1=0.4721 auc=0.9218 lr=1.08e-04
+[epoch 26/30] train_loss=1.3634 eval_acc1=72.88 f1=0.4933 auc=0.9251 lr=7.07e-05
+[epoch 27/30] train_loss=1.3318 eval_acc1=72.88 f1=0.4703 auc=0.9216 lr=4.08e-05
+[epoch 28/30] train_loss=1.3256 eval_acc1=73.68 f1=0.4797 auc=0.9232 lr=1.89e-05
+[epoch 29/30] train_loss=1.3349 eval_acc1=73.48 f1=0.4835 auc=0.9239 lr=5.50e-06
+[epoch 30/30] train_loss=1.3398 eval_acc1=74.08 f1=0.4992 auc=0.9227 lr=1.00e-06
+[I 2026-11-22 11:15:45,878] Trial 13 finished with value: 0.49919267024506053 and parameters: {'lr': 0.0007312372200547594, 'class_weighting': 'sqrt_inverse_freq', 'label_smoothing': 0.005244733818033689}. Best is trial 13 with value: 0.49919267024506053.
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8545 eval_acc1=66.50 f1=0.1537 auc=0.7713 lr=3.85e-05
+[epoch 2/30] train_loss=1.7141 eval_acc1=66.10 f1=0.1890 auc=0.8164 lr=7.59e-05
+[epoch 3/30] train_loss=1.6984 eval_acc1=61.52 f1=0.2309 auc=0.8095 lr=1.13e-04
+[epoch 4/30] train_loss=1.6847 eval_acc1=60.72 f1=0.1877 auc=0.8241 lr=1.51e-04
+[epoch 5/30] train_loss=1.6601 eval_acc1=66.20 f1=0.2846 auc=0.8535 lr=1.88e-04
+[epoch 6/30] train_loss=1.6463 eval_acc1=64.11 f1=0.3271 auc=0.8434 lr=2.26e-04
+[epoch 7/30] train_loss=1.6113 eval_acc1=61.12 f1=0.2992 auc=0.8565 lr=2.63e-04
+[epoch 8/30] train_loss=1.6153 eval_acc1=68.79 f1=0.3937 auc=0.8850 lr=3.01e-04
+[epoch 9/30] train_loss=1.5969 eval_acc1=69.89 f1=0.3504 auc=0.8954 lr=3.38e-04
+[epoch 10/30] train_loss=1.5718 eval_acc1=70.19 f1=0.3664 auc=0.8874 lr=3.76e-04
+[epoch 11/30] train_loss=1.5751 eval_acc1=71.88 f1=0.3539 auc=0.8986 lr=3.73e-04
+[epoch 12/30] train_loss=1.5533 eval_acc1=71.29 f1=0.3859 auc=0.9001 lr=3.66e-04
+[I 2026-11-22 11:17:20,690] Trial 14 pruned. MedianPruner na época 12
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8960 eval_acc1=66.00 f1=0.1257 auc=0.7638 lr=2.73e-05
+[epoch 2/30] train_loss=1.7461 eval_acc1=64.71 f1=0.2060 auc=0.8083 lr=5.35e-05
+[epoch 3/30] train_loss=1.7320 eval_acc1=61.52 f1=0.2141 auc=0.8056 lr=7.98e-05
+[epoch 4/30] train_loss=1.7227 eval_acc1=60.82 f1=0.2178 auc=0.8151 lr=1.06e-04
+[epoch 5/30] train_loss=1.7034 eval_acc1=66.20 f1=0.2785 auc=0.8477 lr=1.32e-04
+[epoch 6/30] train_loss=1.6929 eval_acc1=63.91 f1=0.2946 auc=0.8341 lr=1.59e-04
+[epoch 7/30] train_loss=1.6675 eval_acc1=61.71 f1=0.2898 auc=0.8380 lr=1.85e-04
+[epoch 8/30] train_loss=1.6710 eval_acc1=67.60 f1=0.3385 auc=0.8757 lr=2.11e-04
+[epoch 9/30] train_loss=1.6557 eval_acc1=68.20 f1=0.3156 auc=0.8879 lr=2.37e-04
+[epoch 10/30] train_loss=1.6332 eval_acc1=69.39 f1=0.3538 auc=0.8782 lr=2.64e-04
+[epoch 11/30] train_loss=1.6339 eval_acc1=71.39 f1=0.3269 auc=0.8957 lr=2.62e-04
+[I 2026-11-22 11:18:48,189] Trial 15 pruned. MedianPruner na época 11
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8880 eval_acc1=61.02 f1=0.1529 auc=0.7763 lr=5.83e-05
+[epoch 2/30] train_loss=1.7754 eval_acc1=66.70 f1=0.1478 auc=0.8220 lr=1.16e-04
+[epoch 3/30] train_loss=1.7579 eval_acc1=59.02 f1=0.2141 auc=0.8017 lr=1.73e-04
+[epoch 4/30] train_loss=1.7493 eval_acc1=60.02 f1=0.1620 auc=0.8283 lr=2.30e-04
+[epoch 5/30] train_loss=1.7253 eval_acc1=67.90 f1=0.2664 auc=0.8608 lr=2.88e-04
+[epoch 6/30] train_loss=1.7158 eval_acc1=65.40 f1=0.3223 auc=0.8567 lr=3.45e-04
+[epoch 7/30] train_loss=1.6859 eval_acc1=64.01 f1=0.3019 auc=0.8644 lr=4.02e-04
+[epoch 8/30] train_loss=1.6894 eval_acc1=67.90 f1=0.3897 auc=0.8903 lr=4.60e-04
+[epoch 9/30] train_loss=1.6769 eval_acc1=70.79 f1=0.3519 auc=0.8981 lr=5.17e-04
+[epoch 10/30] train_loss=1.6582 eval_acc1=70.39 f1=0.3689 auc=0.8922 lr=5.74e-04
+[epoch 11/30] train_loss=1.6613 eval_acc1=72.58 f1=0.3622 auc=0.8993 lr=5.71e-04
+[epoch 12/30] train_loss=1.6482 eval_acc1=71.78 f1=0.4108 auc=0.9010 lr=5.60e-04
+[epoch 13/30] train_loss=1.6361 eval_acc1=69.69 f1=0.3186 auc=0.8880 lr=5.43e-04
+[epoch 14/30] train_loss=1.6303 eval_acc1=71.98 f1=0.4114 auc=0.9012 lr=5.20e-04
+[epoch 15/30] train_loss=1.6227 eval_acc1=70.89 f1=0.4072 auc=0.9043 lr=4.90e-04
+[I 2026-11-22 11:20:47,790] Trial 16 pruned. MedianPruner na época 15
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8057 eval_acc1=66.80 f1=0.1512 auc=0.8172 lr=2.81e-04
+[epoch 2/30] train_loss=1.7192 eval_acc1=67.70 f1=0.1642 auc=0.8375 lr=5.60e-04
+[epoch 3/30] train_loss=1.6808 eval_acc1=62.81 f1=0.1948 auc=0.8395 lr=8.40e-04
+[epoch 4/30] train_loss=1.6516 eval_acc1=67.50 f1=0.2363 auc=0.8787 lr=1.12e-03
+[epoch 5/30] train_loss=1.6238 eval_acc1=70.49 f1=0.3135 auc=0.8697 lr=1.40e-03
+[epoch 6/30] train_loss=1.6185 eval_acc1=66.10 f1=0.3481 auc=0.8882 lr=1.68e-03
+[epoch 7/30] train_loss=1.5833 eval_acc1=67.90 f1=0.2611 auc=0.8859 lr=1.96e-03
+[epoch 8/30] train_loss=1.6005 eval_acc1=67.10 f1=0.3565 auc=0.8864 lr=2.24e-03
+[epoch 9/30] train_loss=1.5889 eval_acc1=71.49 f1=0.3218 auc=0.8923 lr=2.52e-03
+[epoch 10/30] train_loss=1.5680 eval_acc1=67.90 f1=0.3354 auc=0.8745 lr=2.80e-03
+[epoch 11/30] train_loss=1.5762 eval_acc1=71.49 f1=0.3587 auc=0.8955 lr=2.78e-03
+[I 2026-11-22 11:22:16,252] Trial 17 pruned. MedianPruner na época 11
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.8083 eval_acc1=60.42 f1=0.1515 auc=0.7839 lr=8.57e-05
+[epoch 2/30] train_loss=1.6979 eval_acc1=66.60 f1=0.1760 auc=0.8248 lr=1.70e-04
+[epoch 3/30] train_loss=1.6724 eval_acc1=61.71 f1=0.2282 auc=0.8187 lr=2.55e-04
+[epoch 4/30] train_loss=1.6509 eval_acc1=63.81 f1=0.1989 auc=0.8470 lr=3.40e-04
+[epoch 5/30] train_loss=1.6148 eval_acc1=66.50 f1=0.2513 auc=0.8676 lr=4.24e-04
+[epoch 6/30] train_loss=1.6020 eval_acc1=66.80 f1=0.3352 auc=0.8777 lr=5.09e-04
+[epoch 7/30] train_loss=1.5543 eval_acc1=66.50 f1=0.2948 auc=0.8814 lr=5.94e-04
+[epoch 8/30] train_loss=1.5636 eval_acc1=67.40 f1=0.3998 auc=0.8911 lr=6.79e-04
+[epoch 9/30] train_loss=1.5515 eval_acc1=70.89 f1=0.3695 auc=0.8991 lr=7.63e-04
+[epoch 10/30] train_loss=1.5247 eval_acc1=68.79 f1=0.3372 auc=0.8885 lr=8.48e-04
+[epoch 11/30] train_loss=1.5307 eval_acc1=72.88 f1=0.3602 auc=0.8999 lr=8.43e-04
+[epoch 12/30] train_loss=1.5118 eval_acc1=71.49 f1=0.3413 auc=0.8999 lr=8.27e-04
+[epoch 13/30] train_loss=1.4926 eval_acc1=70.09 f1=0.3373 auc=0.8936 lr=8.02e-04
+[epoch 14/30] train_loss=1.4861 eval_acc1=72.28 f1=0.3972 auc=0.9030 lr=7.67e-04
+[epoch 15/30] train_loss=1.4719 eval_acc1=70.49 f1=0.4266 auc=0.9102 lr=7.24e-04
+[epoch 16/30] train_loss=1.4797 eval_acc1=71.59 f1=0.4386 auc=0.9109 lr=6.73e-04
+[epoch 17/30] train_loss=1.4613 eval_acc1=73.18 f1=0.4458 auc=0.9191 lr=6.17e-04
+[I 2026-11-22 11:24:30,665] Trial 18 pruned. MedianPruner na época 17
+[engine] cl_vit DermaMNIST | params=2,827,363 flops=197,770,224 | stem params=144,816 flops=9,523,200 tokens=64 | train=7007 eval=1003 (val) | device=cuda
+[epoch 1/30] train_loss=1.4661 eval_acc1=66.90 f1=0.1145 auc=0.8229 lr=3.17e-04
+[epoch 2/30] train_loss=1.3633 eval_acc1=67.30 f1=0.1271 auc=0.8265 lr=6.33e-04
+[epoch 3/30] train_loss=1.3493 eval_acc1=68.10 f1=0.1717 auc=0.8336 lr=9.50e-04
+[epoch 4/30] train_loss=1.3358 eval_acc1=67.00 f1=0.1271 auc=0.8733 lr=1.27e-03
+[epoch 5/30] train_loss=1.3251 eval_acc1=69.29 f1=0.2012 auc=0.8829 lr=1.58e-03
+[epoch 6/30] train_loss=1.3216 eval_acc1=71.88 f1=0.3037 auc=0.8914 lr=1.90e-03
+[epoch 7/30] train_loss=1.3070 eval_acc1=67.60 f1=0.1615 auc=0.9010 lr=2.21e-03
+[epoch 8/30] train_loss=1.3115 eval_acc1=70.69 f1=0.2661 auc=0.8860 lr=2.53e-03
+[epoch 9/30] train_loss=1.3053 eval_acc1=70.59 f1=0.2410 auc=0.9024 lr=2.85e-03
+[epoch 10/30] train_loss=1.2983 eval_acc1=68.89 f1=0.2640 auc=0.8983 lr=3.16e-03
+[epoch 11/30] train_loss=1.3018 eval_acc1=68.89 f1=0.2076 auc=0.9014 lr=3.14e-03
+[I 2026-11-22 11:25:59,213] Trial 19 pruned. MedianPruner na época 11

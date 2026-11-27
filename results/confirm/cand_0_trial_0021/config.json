@@ -1,0 +1,35 @@
+{
+ "candidate": {
+  "trial": 21,
+  "params": {
+   "stem_channels": 48,
+   "stem_channel_growth": "double",
+   "stem_extra_conv": true,
+   "stem_final_proj": "linear",
+   "stem_lr_mult": 0.7886956769485728
+  },
+  "search_values": [
+   71.38
+  ]
+ },
+ "config": {
+  "model": "cl_vit",
+  "dataset": "cifar100",
+  "lr": 0.003,
+  "data_path": "./data",
+  "workers": 8,
+  "seed": 0,
+  "stem_cfg": {
+   "channels": 48,
+   "growth": "double",
+   "extra_conv": true,
+   "final_proj": "linear"
+  },
+  "stem_lr_mult": 0.7886956769485728,
+  "epochs": 100,
+  "eval_split": "val",
+  "monitor": "acc1",
+  "save_ckpt": "best",
+  "out_dir": "./results/confirm/cand_0_trial_0021"
+ }
+}

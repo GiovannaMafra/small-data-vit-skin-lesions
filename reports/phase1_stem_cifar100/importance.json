@@ -1,0 +1,7 @@
+{
+ "stem_lr_mult": 0.979122697671571,
+ "stem_extra_conv": 0.009845257355449768,
+ "stem_channels": 0.00953107464255304,
+ "stem_final_proj": 0.0014538638359026304,
+ "stem_channel_growth": 4.710649452366914e-05
+}

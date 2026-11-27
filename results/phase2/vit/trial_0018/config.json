@@ -1,0 +1,24 @@
+{
+ "trial": 18,
+ "study": "phase2_derma_vit",
+ "params": {
+  "lr": 0.0009227191532604116,
+  "class_weighting": "none",
+  "label_smoothing": 0.04131126727907848
+ },
+ "config": {
+  "model": "vit",
+  "dataset": "dermamnist",
+  "lr": 0.0009227191532604116,
+  "data_path": "./data",
+  "workers": 8,
+  "seed": 0,
+  "smoothing": 0.04131126727907848,
+  "class_weighting": "none",
+  "epochs": 30,
+  "eval_split": "val",
+  "monitor": "f1_macro",
+  "save_ckpt": "best",
+  "out_dir": "./results/phase2/vit/trial_0018"
+ }
+}

@@ -1,0 +1,41 @@
+[
+ {
+  "trial": 21,
+  "params": {
+   "stem_channels": 48,
+   "stem_channel_growth": "double",
+   "stem_extra_conv": true,
+   "stem_final_proj": "linear",
+   "stem_lr_mult": 0.7886956769485728
+  },
+  "search_values": [
+   71.38
+  ]
+ },
+ {
+  "trial": 24,
+  "params": {
+   "stem_channels": 48,
+   "stem_channel_growth": "double",
+   "stem_extra_conv": true,
+   "stem_final_proj": "linear",
+   "stem_lr_mult": 0.7590842385175649
+  },
+  "search_values": [
+   71.32
+  ]
+ },
+ {
+  "trial": 23,
+  "params": {
+   "stem_channels": 48,
+   "stem_channel_growth": "double",
+   "stem_extra_conv": true,
+   "stem_final_proj": "linear",
+   "stem_lr_mult": 0.7595967802399844
+  },
+  "search_values": [
+   71.24
+  ]
+ }
+]

@@ -1,0 +1,44 @@
+[
+ {
+  "candidate": 0,
+  "trial": 21,
+  "params": {
+   "stem_channels": 48,
+   "stem_channel_growth": "double",
+   "stem_extra_conv": true,
+   "stem_final_proj": "linear",
+   "stem_lr_mult": 0.7886956769485728
+  },
+  "val_acc1_last_epoch": 74.16,
+  "stem_params": 144816,
+  "stem_flops": 9523200
+ },
+ {
+  "candidate": 1,
+  "trial": 24,
+  "params": {
+   "stem_channels": 48,
+   "stem_channel_growth": "double",
+   "stem_extra_conv": true,
+   "stem_final_proj": "linear",
+   "stem_lr_mult": 0.7590842385175649
+  },
+  "val_acc1_last_epoch": 73.84,
+  "stem_params": 144816,
+  "stem_flops": 9523200
+ },
+ {
+  "candidate": 2,
+  "trial": 23,
+  "params": {
+   "stem_channels": 48,
+   "stem_channel_growth": "double",
+   "stem_extra_conv": true,
+   "stem_final_proj": "linear",
+   "stem_lr_mult": 0.7595967802399844
+  },
+  "val_acc1_last_epoch": 73.6,
+  "stem_params": 144816,
+  "stem_flops": 9523200
+ }
+]

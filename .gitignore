@@ -3,4 +3,10 @@ tensorboard/*
 save/*
 venv/*
 data/*
-logs/*
+optuna_storage/*
+results/**/*.pth
+logs/smoke/
+slurm-*.out
+__pycache__/
+*.pyc
+.venv/

@@ -1,0 +1,24 @@
+=== job 32582 array=32582_1 host=cluster-node7 Sun Nov 22 05:24:16 AM -03 2026 ===
+Sun Nov 22 05:24:16 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100 80GB PCIe          On  |   00000000:CA:00.0 Off |                    0 |
+| N/A   31C    P0             44W /  300W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+torch 2.14.1+cu130 cuda True
+[optuna] phase1_stem_cifar100: já tem 25/25 trials terminados; nada a fazer.
+[fase 1] melhor trial #21: acc=71.38 params={'stem_channels': 48, 'stem_channel_growth': 'double', 'stem_extra_conv': True, 'stem_final_proj': 'linear', 'stem_lr_mult': 0.7886956769485728}

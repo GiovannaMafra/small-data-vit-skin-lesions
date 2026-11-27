@@ -1,0 +1,46 @@
+# Espaços de busca do pipeline Optuna (editável).
+# A receita de treino do artigo (AdamW, warmup, cosine, label smoothing, CutMix, Mixup,
+# AutoAugment, stochastic depth, RA, random erasing) vem dos padrões do main.py
+# (utils/cli.py) e NÃO é buscada. Só o lr por modelo é fixado aqui.
+
+recipe:
+  lr:              # lr da receita (igual para todos os ViTs)
+    vit: 0.003
+    s_vit: 0.003
+    l_vit: 0.003
+    sl_vit: 0.003
+    cl_vit: 0.003
+  overrides: {}    # outros args do main.py para sobrescrever em todas as fases (ex.: {workers: 8})
+
+# ---------------------------------------------------------------------------
+# Fase 1: desenho do stem do CL-ViT (CIFAR-100, val = 10% estratificado do treino)
+# Nº de convs stride 2 = log2(patch) (patch 4 em 32px -> 2 convs; patch 8 em 64px -> 3)
+# ---------------------------------------------------------------------------
+phase1:
+  dataset: cifar100
+  val_frac: 0.1
+  split_seed: 0
+  split_file: splits/cifar100_val10_seed0.json
+  space:
+    stem_channels: [32, 48, 64, 96, 128]
+    stem_channel_growth: [constant, double]
+    stem_extra_conv: [false, true]
+    stem_final_proj: [conv1x1, linear, none]   # none = a última conv stride 2 já sai em dim
+    stem_lr_mult: {low: 0.5, high: 2.0, log: true}
+  # Primeiro trial (enqueue_trial): stem da proposta (= ConvStem original 3->96->192)
+  default_trial:
+    stem_channels: 96
+    stem_channel_growth: double
+    stem_extra_conv: false
+    stem_final_proj: none
+    stem_lr_mult: 1.0
+
+# ---------------------------------------------------------------------------
+# Fase 2: desbalanceamento no DermaMNIST (val oficial), igual para os 3 modelos
+# ---------------------------------------------------------------------------
+phase2:
+  dataset: dermamnist
+  space:
+    lr: {low: 1.0e-4, high: 5.0e-3, log: true}
+    class_weighting: [none, inverse_freq, sqrt_inverse_freq]
+    label_smoothing: {low: 0.0, high: 0.2}

@@ -1,0 +1,2 @@
+Modelo,Seeds,Acc top-1 (%),Acc@1 best (comparável c/ artigo),Params (M),FLOPs (M),Vazão (img/s)
+cl_vit,3,74.94 ± 0.40,75.11 ± 0.26,2.85,197.8,5435
