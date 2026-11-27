@@ -30,8 +30,8 @@ Teste, média ± desvio das 3 seeds.
 |---|---|---|
 | ViT (artigo) | 73,81 | 57,07 |
 | SL-ViT (artigo) | 76,92 | 61,07 |
-| ViT (nossa reprodução) | 74,15 | 56,86 |
-| SL-ViT (nossa reprodução) | 76,48 | 60.07 |
+| ViT (nossa reprodução) | 74,15 ± 0,14 | 56,86 ± 0,28 |
+| SL-ViT (nossa reprodução) | 76,48 ± 0,47 | 60.07 ± 0,20 |
 | **CL-ViT (nosso), melhor época** | **75,11 ± 0,26** | **61,95 ± 0,13** |
 | CL-ViT (nosso), última época | 74,94 ± 0,40 | 61,87 ± 0,25 |
 
